@@ -18,7 +18,7 @@ step () {
 step "Setting up your Mac\n"
 
 # Check for Homebrew and install if we don't have it
-step "Installing Homebrew ..."
+step "Installing Homebrew & Xcode Command Line Tools ..."
 if [ -x "$(which brew)" ]; then
   printf "Homebrew is already installed\n"
 
@@ -28,10 +28,6 @@ if [ -x "$(which brew)" ]; then
 else
   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
 fi
-
-# Check for Xcode Command Line Tools and install if we don't have it
-#step "Installing Xcode Command Line Tools"
-#$(xcode-select -p) && printf "Xcode Command Line Tools is already installed\n" || xcode-select --install
 
 # Check for Oh My Zsh and install if we don't have it
 step "Installing Oh My Zsh ..."
