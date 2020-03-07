@@ -23,10 +23,10 @@ fi
 
 # Check for Homebrew and install if we don't have it
 step "Installing Homebrew"
-if test ! $(which brew); then
-  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
-else
+if [ -x "$(which brew)" ]; then
   printf "Homebrew is already installed\n"
+else
+  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
 fi
 
 # Update Homebrew recipes
