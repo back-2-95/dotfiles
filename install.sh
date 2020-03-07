@@ -17,13 +17,6 @@ step () {
 
 step "Setting up your Mac\n"
 
-if [ ! -d "$REPO_FOLDER" ] ; then
-    step "Clone the repository to $REPO_FOLDER ..."
-    git clone -b $REPO_BRANCH $REPO_URL $REPO_FOLDER
-fi
-
-cd "$REPO_FOLDER" || exit 1
-
 # Check for Xcode Command Line Tools and install if we don't have it
 step "Installing Xcode Command Line Tools"
 if [ -d "$(xcode-select -p)" ]; then
@@ -31,6 +24,18 @@ if [ -d "$(xcode-select -p)" ]; then
 else
   xcode-select --install
 fi
+
+# Clone this repository locally if does not exist
+step "Installing dotfiles ..."
+if [ -d "$REPO_FOLDER" ] ; then
+    printf "$REPO_FOLDER already exists\n"
+else
+    step "Clone the repository to $REPO_FOLDER ..."
+    git clone -b $REPO_BRANCH $REPO_URL $REPO_FOLDER
+fi
+
+# Move to repo folder
+cd "$REPO_FOLDER" || exit 1
 
 # Check for Oh My Zsh and install if we don't have it
 step "Installing Oh My Zsh ..."
