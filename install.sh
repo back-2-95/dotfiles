@@ -19,11 +19,7 @@ step "Setting up your Mac\n"
 
 # Check for Xcode Command Line Tools and install if we don't have it
 step "Installing Xcode Command Line Tools"
-if [ -d "$(xcode-select -p)" ]; then
-  printf "Xcode Command Line Tools is already installed\n"
-else
-  xcode-select --install
-fi
+$(xcode-select -p) && printf "Xcode Command Line Tools is already installed\n" || xcode-select --install
 
 # Clone this repository locally if does not exist
 step "Installing dotfiles ..."
