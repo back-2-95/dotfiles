@@ -17,7 +17,7 @@ brew 'drud/ddev/ddev'
 brew 'httpie'
 brew 'lastpass-cli'
 brew 'mackup'
-brew 'mas' # Mac App Store manager
+#brew 'mas' # Mac App Store manager
 brew 'mysql'
 brew 'nvm'
 brew 'openshift-cli'
@@ -45,5 +45,5 @@ cask 'vlc'
 
 # Mac App Store
 
-mas 'LastPass Password Manager', id: 926036361
-mas 'Monosnap', id: 540348655
+#mas 'LastPass Password Manager', id: 926036361
+#mas 'Monosnap', id: 540348655

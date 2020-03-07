@@ -35,6 +35,7 @@ if [ -d "$HOME/.oh-my-zsh" ]; then
   printf "Oh My Zsh is already installed\n"
 else
   sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
+  compaudit | xargs chmod g-w,o-w
 fi
 
 # Clone this repository locally if does not exist
