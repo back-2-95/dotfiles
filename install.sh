@@ -17,9 +17,29 @@ step () {
 
 step "Setting up your Mac\n"
 
+# Check for Homebrew and install if we don't have it
+step "Installing Homebrew ..."
+if [ -x "$(which brew)" ]; then
+  printf "Homebrew is already installed\n"
+
+  # Update Homebrew recipes
+  step "Updating Homebrew ..."
+  brew update
+else
+  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
+fi
+
 # Check for Xcode Command Line Tools and install if we don't have it
-step "Installing Xcode Command Line Tools"
-$(xcode-select -p) && printf "Xcode Command Line Tools is already installed\n" || xcode-select --install
+#step "Installing Xcode Command Line Tools"
+#$(xcode-select -p) && printf "Xcode Command Line Tools is already installed\n" || xcode-select --install
+
+# Check for Oh My Zsh and install if we don't have it
+step "Installing Oh My Zsh ..."
+if [ -d "$HOME/.oh-my-zsh" ]; then
+  printf "Oh My Zsh is already installed\n"
+else
+  sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
+fi
 
 # Clone this repository locally if does not exist
 step "Installing dotfiles ..."
@@ -32,26 +52,6 @@ fi
 
 # Move to repo folder
 cd "$REPO_FOLDER" || exit 1
-
-# Check for Oh My Zsh and install if we don't have it
-step "Installing Oh My Zsh ..."
-if [ -d "$HOME/.oh-my-zsh" ]; then
-  printf "Oh My Zsh is already installed\n"
-else
-  sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
-fi
-
-# Check for Homebrew and install if we don't have it
-step "Installing Homebrew ..."
-if [ -x "$(which brew)" ]; then
-  printf "Homebrew is already installed\n"
-
-  # Update Homebrew recipes
-  step "Updating Homebrew ..."
-  brew update
-else
-  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
-fi
 
 # Install all our dependencies with bundle (See Brewfile)
 step "Installing Homebrew Bundle ..."
