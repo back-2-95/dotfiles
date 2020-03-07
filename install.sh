@@ -1,5 +1,9 @@
 #!/bin/sh
 
+REPO_FOLDER=~/dotfiles
+REPO_URL=https://github.com/back-2-95/dotfiles.git
+REPO_BRANCH=master
+
 # Colors
 NO_COLOR="\033[0m"
 GREEN="\033[0;32m"
@@ -13,13 +17,20 @@ step () {
 
 step "Setting up your Mac\n"
 
+if [ ! -d "$REPO_FOLDER" ] ; then
+    step "Clone the repository to $REPO_FOLDER ..."
+    git clone -b $REPO_BRANCH $REPO_URL $REPO_FOLDER
+fi
+
+cd "$REPO_FOLDER" || exit 1
+
 # Check for Xcode Command Line Tools and install if we don't have it
-#step "Installing Xcode Command Line Tools"
-#if [ -d "$(xcode-select -p)" ]; then
-#  printf "Xcode Command Line Tools is already installed\n"
-#else
-#  xcode-select --install
-#fi
+step "Installing Xcode Command Line Tools"
+if [ -d "$(xcode-select -p)" ]; then
+  printf "Xcode Command Line Tools is already installed\n"
+else
+  xcode-select --install
+fi
 
 # Check for Oh My Zsh and install if we don't have it
 step "Installing Oh My Zsh ..."

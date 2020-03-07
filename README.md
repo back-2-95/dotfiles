@@ -9,6 +9,12 @@ These are my dotfiles
 
 ## Setting up your Mac
 
+Oneliner:
+
+```
+$ sh -c "$(curl -fsSL https://raw.githubusercontent.com/back-2-95/dotfiles/master/install.sh)"
+```
+
 Clone this repository to `~/dotfiles`:
 
 ```
