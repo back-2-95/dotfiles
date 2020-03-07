@@ -39,6 +39,7 @@ cask 'phpstorm'
 #cask 'slack'
 cask 'spectacle'
 cask 'sublime-text'
+cask 'transmission'
 cask 'tunnelblick' # VPN for Helsinki University
 cask 'vlc'
 
