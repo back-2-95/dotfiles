@@ -36,6 +36,8 @@ $ cd ~/dotfiles && source install.sh
 To add any secrets like `AWS_ACCESS_KEY` or `DIGITALOCEAN_TOKEN` add `~/dotfiles/secrets.zsh` and export your
 variables there. This file is NOT added to version control.
 
+Alternatively you could utilize encryption: https://abdullah.today/encrypted-dotfiles/
+
 ## Included
 
 - Homebrew
@@ -70,6 +72,7 @@ variables there. This file is NOT added to version control.
 
 ## Thanks to...
 
+- https://dotfiles.github.io/
 - https://github.com/driesvints/dotfiles
 - https://github.com/kevinSuttle/macOS-Defaults
 - https://github.com/mathiasbynens/dotfiles

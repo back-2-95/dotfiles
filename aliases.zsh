@@ -1,7 +1,7 @@
-source .env
+source $HOME/dotfiles/.env
 
 alias druid='cd $PROJECTS_FOLDER'
-alias ohmytheme='subl ~/dotfiles/themes/omena.zsh-theme'
+alias ohmytheme='subl $HOME/dotfiles/themes/omena.zsh-theme'
 alias copykey='pbcopy < ~/.ssh/id_rsa.pub'
 alias ..="cd .."
 alias ...="cd ../.."
