@@ -56,12 +56,15 @@ source .env
 step "Installing Homebrew Bundle ..."
 brew bundle
 
-step "Symlink .zshrc $HOME"
-ln -sfn $HOME/dotfiles/.zshrc $HOME/.zshrc
+step "Symlink .zshrc to $HOME/.zshrc"
+ln -sfn $DOTFILES_FOLDER/.zshrc $HOME/.zshrc
+
+step "Symlink .gitconfig to $HOME/.gitconfig"
+ln -sfn $DOTFILES_FOLDER/.gitconfig $HOME/.gitconfig
 
 # Symlink the Mackup config file to the home directory
-step "Symlink .mackup.cfg to $HOME"
-ln -sfn $HOME/dotfiles/.mackup.cfg $HOME/.mackup.cfg
+step "Symlink .mackup.cfg to $HOME/.mackup.cfg"
+ln -sfn $DOTFILES_FOLDER/.mackup.cfg $HOME/.mackup.cfg
 
 step "Create projects folder $PROJECTS_FOLDER ..."
 if [ -d "$PROJECTS_FOLDER" ]; then

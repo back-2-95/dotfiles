@@ -1,0 +1,5 @@
+[user]
+	name = Marko Korhonen
+	email = marko.korhonen@druid.fi
+[core]
+	autocrlf = input
