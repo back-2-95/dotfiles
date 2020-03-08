@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-# ~/.macos — https://mths.be/macos
+# Check for some recommendations from https://mths.be/macos
 
 # Close any open System Preferences panes, to prevent them from overriding
 # settings we’re about to change
@@ -56,4 +56,8 @@ defaults write com.apple.mail DisableInlineAttachmentViewing -bool true
 # Disable automatic spell checking
 defaults write com.apple.mail SpellCheckingBehavior -string "NoSpellCheckingEnabled"
 
-echo "Done. Note that some of these changes require a logout/restart to take effect."
+###############################################################################
+# DONE                                                                        #
+###############################################################################
+
+step "Done. Note that some of these changes require a logout/restart to take effect."

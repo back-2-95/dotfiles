@@ -10,40 +10,41 @@ tap 'drud/ddev'
 
 # Binaries
 
-brew 'amazeeio/lagoon-cli/lagoon'
-brew 'ansible'
-brew 'doctl'
-brew 'drud/ddev/ddev'
-brew 'httpie'
-brew 'lastpass-cli'
-brew 'mackup'
-#brew 'mas' # Mac App Store manager
-brew 'mysql'
-brew 'nvm'
-brew 'openshift-cli'
-brew 'terraform'
+brew 'amazeeio/lagoon-cli/lagoon'   # Command line tool for interacting with a Lagoon API
+brew 'ansible'                      # Automate deployment, configuration, and upgrading
+brew 'doctl'                        # Command-line tool for DigitalOcean
+brew 'drud/ddev/ddev'               # ddev: a local development environment management system
+brew 'httpie'                       # User-friendly cURL replacement (command-line HTTP client)
+brew 'lastpass-cli'                 # LastPass command-line interface tool
+brew 'mackup'                       # Keep your Mac's application settings in sync
+brew 'mas'                          # Mac App Store manager
+brew 'mysql'                        # MySQL
+brew 'nvm'                          # Manage multiple Node.js versions
+brew 'openshift-cli'                # OpenShift command-line interface tools
+brew 'terraform'                    # Tool to build, change, and version infrastructure
 
 # Development
 
-brew 'php' # Now 7.4
-brew 'ruby'
+brew 'php'                          # PHP 7.4
+brew 'ruby'                         # Ruby
 
 # Apps
 
-cask 'docker'
-cask 'firefox'
-cask 'google-chrome'
-cask 'iterm2'
-cask 'keepingyouawake'
-cask 'phpstorm'
-#cask 'slack'
-cask 'spectacle'
-cask 'sublime-text'
-cask 'transmission'
-cask 'tunnelblick' # VPN for Helsinki University
-cask 'vlc'
+cask 'docker'                       # Docker Desktop
+cask 'firefox'                      # Firefox browser
+cask 'google-chrome'                # Google Chrome Browser
+cask 'iterm2'                       # Terminal
+cask 'keepingyouawake'              # KeepingYouAwake
+cask 'phpstorm'                     # IDE
+cask 'rectangle'                    # Move and resize windows in macOS using keyboard shortcuts or snap areas
+cask 'slack'                        # Slack chats
+cask 'sublime-text'                 # Text editor
+cask 'transmission'                 # Torrent client
+cask 'tunnelblick'                  # VPN for Helsinki University
+cask 'vlc'                          # Video player
+cask 'vyprvpn'                      # Druid VPN
 
 # Mac App Store
 
-#mas 'LastPass Password Manager', id: 926036361
-#mas 'Monosnap', id: 540348655
+mas 'LastPass Password Manager', id: 926036361
+mas 'Monosnap', id: 540348655
