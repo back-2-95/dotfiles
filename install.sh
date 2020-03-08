@@ -1,8 +1,10 @@
 #!/bin/sh
 
-REPO_FOLDER=~/dotfiles
-REPO_URL=https://github.com/back-2-95/dotfiles.git
-REPO_BRANCH=master
+source .env
+
+DOTFILES_FOLDER=$HOME/dotfiles
+DOTFILES_URL=https://github.com/back-2-95/dotfiles.git
+DOTFILES_BRANCH=master
 
 # Colors
 NO_COLOR="\033[0m"
@@ -35,20 +37,19 @@ if [ -d "$HOME/.oh-my-zsh" ]; then
   printf "Oh My Zsh is already installed\n"
 else
   sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
-  compaudit | xargs chmod g-w,o-w
 fi
 
 # Clone this repository locally if does not exist
 step "Installing dotfiles ..."
-if [ -d "$REPO_FOLDER" ] ; then
-    printf "$REPO_FOLDER already exists\n"
+if [ -d "$DOTFILES_FOLDER" ] ; then
+    printf "$DOTFILES_FOLDER already exists\n"
 else
-    step "Clone the repository to $REPO_FOLDER ..."
-    git clone -b $REPO_BRANCH $REPO_URL $REPO_FOLDER
+    step "Clone the repository to $DOTFILES_FOLDER ..."
+    git clone -b $DOTFILES_BRANCH $DOTFILES_URL $DOTFILES_FOLDER
 fi
 
 # Move to repo folder
-cd "$REPO_FOLDER" || exit 1
+cd "$DOTFILES_FOLDER" || exit 1
 
 # Install all our dependencies with bundle (See Brewfile)
 step "Installing Homebrew Bundle ..."
@@ -60,6 +61,13 @@ ln -sfn $HOME/dotfiles/.zshrc $HOME/.zshrc
 # Symlink the Mackup config file to the home directory
 step "Symlink .mackup.cfg to $HOME"
 ln -sfn $HOME/dotfiles/.mackup.cfg $HOME/.mackup.cfg
+
+step "Create projects folder $PROJECTS_FOLDER ..."
+if [ -d "$PROJECTS_FOLDER" ]; then
+  printf "$PROJECTS_FOLDER already exists\n"
+else
+  mkdir -p $PROJECTS_FOLDER && printf "$PROJECTS_FOLDER created\n"
+fi
 
 # Set macOS preferences
 # We will run this last because this will reload the shell

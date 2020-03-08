@@ -1,10 +1,10 @@
-alias druid='cd ~/Druid/'
-alias ohmy='subl ~/.oh-my-zsh/custom/my.zsh'
-alias ohmytheme='subl ~/.oh-my-zsh/themes/robbyrussell.zsh-theme'
+source .env
+
+alias druid='cd $PROJECTS_FOLDER'
+alias ohmytheme='subl ~/dotfiles/themes/omena.zsh-theme'
 alias copykey='pbcopy < ~/.ssh/id_rsa.pub'
 alias ..="cd .."
 alias ...="cd ../.."
-alias h='cd ~'
 alias c='clear'
 alias stonehenge='make -C ~/stonehenge'
 alias testubuntu='docker run -ti -v `pwd`:/home/current ubuntu /bin/bash'
