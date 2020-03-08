@@ -1,7 +1,5 @@
 #!/bin/sh
 
-source .env
-
 DOTFILES_FOLDER=$HOME/dotfiles
 DOTFILES_URL=https://github.com/back-2-95/dotfiles.git
 DOTFILES_BRANCH=master
@@ -50,6 +48,9 @@ fi
 
 # Move to repo folder
 cd "$DOTFILES_FOLDER" || exit 1
+
+# Include .env
+source .env
 
 # Install all our dependencies with bundle (See Brewfile)
 step "Installing Homebrew Bundle ..."
