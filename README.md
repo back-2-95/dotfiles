@@ -56,6 +56,7 @@ Alternatively you could utilize encryption: https://abdullah.today/encrypted-dot
   - LastPass CLI
   - Mac App Store manager
   - Mackup
+  - mkcert and nss
   - Monosnap
   - MySQL
   - NVM
@@ -69,6 +70,11 @@ Alternatively you could utilize encryption: https://abdullah.today/encrypted-dot
   - Tunnelblick
   - VLC
   - VyprVPN
+
+## TODO
+
+- Install Composer and hirak/prestissimo
+- Clone Stonehenge
 
 ## Thanks to...
 

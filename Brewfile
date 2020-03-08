@@ -18,7 +18,9 @@ brew 'httpie'                       # User-friendly cURL replacement (command-li
 brew 'lastpass-cli'                 # LastPass command-line interface tool
 brew 'mackup'                       # Keep your Mac's application settings in sync
 brew 'mas'                          # Mac App Store manager
+brew 'mkcert'                       # Simple tool to make locally trusted development certificates
 brew 'mysql'                        # MySQL
+brew 'nss'                          # Libraries for security-enabled client and server applications
 brew 'nvm'                          # Manage multiple Node.js versions
 brew 'openshift-cli'                # OpenShift command-line interface tools
 brew 'terraform'                    # Tool to build, change, and version infrastructure
