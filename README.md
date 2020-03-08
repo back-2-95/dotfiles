@@ -12,8 +12,10 @@ These are my dotfiles
 ### Oneliner
 
 ```
-$ sh -c "$(curl -fsSL https://raw.githubusercontent.com/back-2-95/dotfiles/master/install.sh)"
+$ sh -c "$(curl -fsSL https://git.io/JvrDa)"
 ```
+
+Source: https://raw.githubusercontent.com/back-2-95/dotfiles/master/install.sh
 
 ### Manually
 
@@ -32,7 +34,7 @@ $ cd ~/dotfiles && source install.sh
 ## Secrets
 
 To add any secrets like `AWS_ACCESS_KEY` or `DIGITALOCEAN_TOKEN` add `~/dotfiles/secrets.zsh` and export your
-variables there.
+variables there. This file is NOT added to version control.
 
 ## Included
 
