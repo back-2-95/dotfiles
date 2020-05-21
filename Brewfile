@@ -37,9 +37,11 @@ cask 'firefox'                      # Firefox browser
 cask 'google-chrome'                # Google Chrome Browser
 cask 'iterm2'                       # Terminal
 cask 'keepingyouawake'              # KeepingYouAwake
+cask 'notion'                       # Notion.so
 cask 'phpstorm'                     # IDE
 cask 'rectangle'                    # Move and resize windows in macOS using keyboard shortcuts or snap areas
 cask 'slack'                        # Slack chats
+cask 'steam'                        # Steam
 cask 'sublime-text'                 # Text editor
 cask 'transmission'                 # Torrent client
 cask 'tunnelblick'                  # VPN for Helsinki University
