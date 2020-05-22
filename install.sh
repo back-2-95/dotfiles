@@ -59,6 +59,9 @@ brew bundle
 step "Symlink .zshrc to $HOME/.zshrc"
 ln -sfn $DOTFILES_FOLDER/.zshrc $HOME/.zshrc
 
+step "Symlink .gitconfig to $HOME/.ssh/config"
+ln -sfn $DOTFILES_FOLDER/.ssh.config $HOME/.ssh/config
+
 step "Symlink .gitconfig to $HOME/.gitconfig"
 ln -sfn $DOTFILES_FOLDER/.gitconfig $HOME/.gitconfig
 

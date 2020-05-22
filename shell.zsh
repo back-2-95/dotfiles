@@ -1,2 +1,2 @@
-ssh-add
+# cd to ~/druid folder
 druid
