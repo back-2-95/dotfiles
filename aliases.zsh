@@ -1,11 +1,9 @@
-source $HOME/dotfiles/.env
+. $HOME/dotfiles/.env
 
 alias druid='cd $PROJECTS_FOLDER'
 alias ohmytheme='subl $HOME/dotfiles/themes/omena.zsh-theme'
 alias copykey='pbcopy < ~/.ssh/id_rsa.pub'
 alias copykeye='pbcopy < ~/.ssh/id_ed25519.pub'
-alias ..="cd .."
-alias ...="cd ../.."
 alias c='clear'
 alias stonehenge='make -C ~/stonehenge'
 alias testubuntu='docker run -ti -v `pwd`:/home/current ubuntu /bin/bash'
