@@ -40,6 +40,7 @@ cask 'keepingyouawake'              # KeepingYouAwake
 cask 'notion'                       # Notion.so
 cask 'phpstorm'                     # IDE
 cask 'rectangle'                    # Move and resize windows in macOS using keyboard shortcuts or snap areas
+cask 'screen'                       # Screen.so
 cask 'slack'                        # Slack chats
 cask 'steam'                        # Steam
 cask 'sublime-text'                 # Text editor
