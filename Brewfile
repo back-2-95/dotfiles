@@ -38,6 +38,7 @@ cask 'google-chrome'                # Google Chrome Browser
 cask 'istatmenus'                   # iStats Menus 6
 cask 'iterm2'                       # Terminal
 cask 'keepingyouawake'              # KeepingYouAwake
+cask 'microsoft-teams'              # Microsoft Teams
 cask 'notion'                       # Notion.so
 cask 'phpstorm'                     # IDE
 cask 'rectangle'                    # Move and resize windows in macOS using keyboard shortcuts or snap areas
