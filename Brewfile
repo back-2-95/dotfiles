@@ -35,7 +35,7 @@ brew 'ruby'                         # Ruby
 cask 'docker'                       # Docker Desktop
 cask 'firefox'                      # Firefox browser
 cask 'google-chrome'                # Google Chrome Browser
-cask 'istatmenus'                   # iStats Menus 6
+cask 'istat-menus'                  # iStats Menus 6
 cask 'iterm2'                       # Terminal
 cask 'keepingyouawake'              # KeepingYouAwake
 cask 'microsoft-teams'              # Microsoft Teams
