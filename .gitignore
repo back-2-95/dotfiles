@@ -1,3 +1,4 @@
 .idea
 Brewfile.lock.json
 secrets.zsh
+*.local.zsh
