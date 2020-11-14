@@ -37,6 +37,14 @@ else
   sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
 fi
 
+# Check for Powerlevel10k and install if we don't have it
+step "Installing Powerlevel10k ..."
+if [ -d "$DOTFILES_FOLDER/themes/powerlevel10k" ]; then
+  printf "Powerlevel10k is already installed\n"
+else
+  git clone --depth=1 https://github.com/romkatv/powerlevel10k.git "$DOTFILES_FOLDER"/themes/powerlevel10k
+fi
+
 # Clone this repository locally if does not exist
 step "Installing dotfiles ..."
 if [ -d "$DOTFILES_FOLDER" ] ; then
