@@ -80,6 +80,9 @@ ln -sfn $DOTFILES_FOLDER/.gitconfig $HOME/.gitconfig
 step "Symlink .mackup.cfg to $HOME/.mackup.cfg"
 ln -sfn $DOTFILES_FOLDER/.mackup.cfg $HOME/.mackup.cfg
 
+step "Install latest LTS node"
+nvm install --lts
+
 step "Create projects folder $PROJECTS_FOLDER ..."
 if [ -d "$PROJECTS_FOLDER" ]; then
   printf "$PROJECTS_FOLDER already exists\n"
