@@ -1,6 +1,6 @@
 . $HOME/dotfiles/.env
 
-alias druid='echo "Moving to Druid folder >>> " && cd $PROJECTS_FOLDER'
+alias druid='cd $PROJECTS_FOLDER'
 alias copykey='pbcopy < ~/.ssh/id_rsa.pub'
 alias copykeye='pbcopy < ~/.ssh/id_ed25519.pub'
 alias c='clear'
