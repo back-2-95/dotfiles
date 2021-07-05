@@ -25,9 +25,9 @@ brew 'nvm'                          # Manage multiple Node.js versions
 
 # Development
 
-brew 'php'                          # PHP 7.4
+brew 'php'                          # PHP 8.0
 brew 'composer'                     # Composer
-brew 'ruby'                         # Ruby
+#brew 'ruby'                         # Ruby
 
 # Apps
 
