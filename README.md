@@ -12,7 +12,7 @@ These are my dotfiles for settings up my macOS from scratch.
 ### Oneliner
 
 ```
-$ sh -c "$(curl -fsSL https://git.io/JvrDa)"
+sh -c "$(curl -fsSL https://git.io/JvrDa)"
 ```
 
 Source: https://raw.githubusercontent.com/back-2-95/dotfiles/master/install.sh
@@ -22,13 +22,13 @@ Source: https://raw.githubusercontent.com/back-2-95/dotfiles/master/install.sh
 Clone this repository to `~/dotfiles`:
 
 ```
-$ git clone https://github.com/back-2-95/dotfiles.git ~/dotfiles
+git clone https://github.com/back-2-95/dotfiles.git ~/dotfiles
 ```
 
 Start the setup:
 
 ```
-$ cd ~/dotfiles && source install.sh
+cd ~/dotfiles && source install.sh
 ```
 
 ## Fonts
