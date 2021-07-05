@@ -40,7 +40,7 @@ cask 'keepingyouawake'              # KeepingYouAwake
 cask 'microsoft-teams'              # Microsoft Teams
 cask 'phpstorm'                     # IDE
 cask 'rectangle'                    # Move and resize windows in macOS using keyboard shortcuts or snap areas
-cask 'screen'                       # Screen.so
+#cask 'screen'                       # Screen.so - not available
 cask 'slack'                        # Slack chats
 cask 'sublime-text'                 # Text editor
 cask 'vyprvpn'                      # Druid VPN
