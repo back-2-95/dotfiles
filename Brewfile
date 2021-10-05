@@ -12,6 +12,7 @@ brew 'doctl'                        # Command-line tool for DigitalOcean
 brew 'httpie'                       # User-friendly cURL replacement (command-line HTTP client)
 brew 'mkcert'                       # Simple tool to make locally trusted development certificates
 brew 'nvm'                          # Manage multiple Node.js versions
+brew 'aquasecurity/trivy/trivy'     # Vulnerability Scanner for Containers and other Artifacts, Suitable for CI.
 
 #tap 'drud/ddev'
 #brew 'drud/ddev/ddev'               # ddev: a local development environment management system
@@ -25,7 +26,8 @@ brew 'nvm'                          # Manage multiple Node.js versions
 
 # Development
 
-brew 'php'                          # PHP 7.4
+brew 'php'                          # PHP 8.0
+brew 'php@7.4'                      # PHP 7.4
 brew 'composer'                     # Composer
 brew 'ruby'                         # Ruby
 
