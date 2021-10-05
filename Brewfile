@@ -29,7 +29,7 @@ brew 'aquasecurity/trivy/trivy'     # Vulnerability Scanner for Containers and o
 brew 'php'                          # PHP 8.0
 brew 'php@7.4'                      # PHP 7.4
 brew 'composer'                     # Composer
-brew 'ruby'                         # Ruby
+#brew 'ruby'                         # Ruby
 
 # Apps
 
@@ -42,7 +42,6 @@ cask 'keepingyouawake'              # KeepingYouAwake
 cask 'microsoft-teams'              # Microsoft Teams
 cask 'phpstorm'                     # IDE
 cask 'rectangle'                    # Move and resize windows in macOS using keyboard shortcuts or snap areas
-cask 'screen'                       # Screen.so
 cask 'slack'                        # Slack chats
 cask 'sublime-text'                 # Text editor
 cask 'vyprvpn'                      # Druid VPN
