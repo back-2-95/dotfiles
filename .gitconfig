@@ -3,3 +3,5 @@
 	email = marko.korhonen@druid.fi
 [core]
 	autocrlf = input
+[init]
+	defaultBranch = main
