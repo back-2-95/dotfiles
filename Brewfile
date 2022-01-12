@@ -9,6 +9,7 @@ tap 'amazeeio/lagoon-cli'
 brew 'amazeeio/lagoon-cli/lagoon'   # Command line tool for interacting with a Lagoon API
 brew 'ansible'                      # Automate deployment, configuration, and upgrading
 brew 'doctl'                        # Command-line tool for DigitalOcean
+brew 'gh'                           # Github CLI
 brew 'httpie'                       # User-friendly cURL replacement (command-line HTTP client)
 brew 'mkcert'                       # Simple tool to make locally trusted development certificates
 brew 'nvm'                          # Manage multiple Node.js versions
@@ -26,8 +27,8 @@ brew 'aquasecurity/trivy/trivy'     # Vulnerability Scanner for Containers and o
 
 # Development
 
-brew 'php'                          # PHP 8.0
-brew 'php@7.4'                      # PHP 7.4
+brew 'php'                          # PHP 8.1
+#brew 'php@7.4'                      # PHP 7.4
 brew 'composer'                     # Composer
 #brew 'ruby'                         # Ruby
 
@@ -39,9 +40,10 @@ cask 'google-chrome'                # Google Chrome Browser
 cask 'istat-menus'                  # iStats Menus 6
 cask 'iterm2'                       # Terminal
 cask 'keepingyouawake'              # KeepingYouAwake
-cask 'microsoft-teams'              # Microsoft Teams
+#cask 'microsoft-teams'              # Microsoft Teams: problems with M1
 cask 'phpstorm'                     # IDE
 cask 'rectangle'                    # Move and resize windows in macOS using keyboard shortcuts or snap areas
+cask 'sequel-ace'                   # Sequel Ace
 cask 'slack'                        # Slack chats
 cask 'sublime-text'                 # Text editor
 cask 'vyprvpn'                      # Druid VPN
