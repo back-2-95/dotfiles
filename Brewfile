@@ -28,7 +28,8 @@ brew 'aquasecurity/trivy/trivy'     # Vulnerability Scanner for Containers and o
 # Development
 
 brew 'php'                          # PHP 8.1
-#brew 'php@7.4'                      # PHP 7.4
+brew 'php@8.0'                      # PHP 8.0
+brew 'php@7.4'                      # PHP 7.4
 brew 'composer'                     # Composer
 #brew 'ruby'                         # Ruby
 
