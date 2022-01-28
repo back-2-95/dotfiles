@@ -4,7 +4,7 @@ These are my dotfiles for settings up my macOS from scratch.
 
 ## Requirements
 
-- Clean install of macOS Catalina
+- Clean install of macOS
 - Logged in with Apple ID
 
 ## Setting up your Mac
@@ -41,33 +41,6 @@ To add any secrets like `AWS_ACCESS_KEY` or `DIGITALOCEAN_TOKEN` add `~/dotfiles
 variables there. This file is NOT added to version control.
 
 Alternatively you could utilize encryption: https://abdullah.today/encrypted-dotfiles/
-
-## Included
-
-- Homebrew
-- Oh My Zsh
-- Brewfile
-  - Ansible
-  - Docker Desktop
-  - doctl
-  - Firefox
-  - Google Chrome
-  - HTTPie
-  - iTerm2
-  - KeepingYouAwake
-  - Lagoon CLI
-  - LastPass CLI
-  - Mac App Store manager
-  - Mackup
-  - mkcert and nss
-  - MySQL
-  - NVM
-  - PHPStorm
-  - Rectangle
-  - Slack
-  - Sublime Text 3
-  - Terraform
-  - VyprVPN
 
 ## TODO
 
