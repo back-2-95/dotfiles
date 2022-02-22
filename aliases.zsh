@@ -19,3 +19,5 @@ alias m='make'
 alias php7.4='echo "🐘 Switch PHP version..." && { brew unlink php@8.0 php@8.1 && brew link php@7.4 -f -q --overwrite } &> /dev/null && php -v'
 alias php8.0='echo "🐘 Switch PHP version..." && { brew unlink php@7.4 php@8.1 && brew link php@8.0 -f -q --overwrite } &> /dev/null && php -v'
 alias php8.1='echo "🐘 Switch PHP version..." && { brew unlink php@7.4 php@8.0 && brew link php@8.1 -f -q --overwrite } &> /dev/null && php -v'
+alias ls="exa"
+alias la="exa --long --all --group"
