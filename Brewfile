@@ -6,6 +6,7 @@
 # Binaries
 
 tap 'amazeeio/lagoon-cli'
+
 brew 'amazeeio/lagoon-cli/lagoon'   # Command line tool for interacting with a Lagoon API
 brew 'ansible'                      # Automate deployment, configuration, and upgrading
 brew 'doctl'                        # Command-line tool for DigitalOcean
@@ -14,6 +15,8 @@ brew 'httpie'                       # User-friendly cURL replacement (command-li
 brew 'mkcert'                       # Simple tool to make locally trusted development certificates
 brew 'nvm'                          # Manage multiple Node.js versions
 brew 'aquasecurity/trivy/trivy'     # Vulnerability Scanner for Containers and other Artifacts, Suitable for CI.
+brew 'exa'
+brew 'mycli'
 
 #tap 'drud/ddev'
 #brew 'drud/ddev/ddev'               # ddev: a local development environment management system
