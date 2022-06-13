@@ -50,7 +50,6 @@ cask 'rectangle'                    # Move and resize windows in macOS using key
 cask 'sequel-ace'                   # Sequel Ace
 cask 'slack'                        # Slack chats
 cask 'sublime-text'                 # Text editor
-cask 'vyprvpn'                      # Druid VPN
 
 # Additional apps
 #cask 'notion'                       # Notion.so
