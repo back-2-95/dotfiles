@@ -22,3 +22,4 @@ alias php8.1='echo "🐘 Switch PHP version..." && { brew unlink php@7.4 php@8.0
 alias ls="exa"
 alias la="exa --long --all --group"
 alias http="http --verify no"
+alias 2dev="git checkout dev && git pull"
