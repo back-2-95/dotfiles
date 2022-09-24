@@ -42,10 +42,9 @@ cask 'google-chrome'                # Google Chrome Browser
 cask 'istat-menus'                  # iStats Menus 6
 cask 'iterm2'                       # Terminal
 cask 'keepingyouawake'              # KeepingYouAwake
-#cask 'microsoft-teams'              # Microsoft Teams: problems with M1
 cask 'phpstorm'                     # IDE
 cask 'rectangle'                    # Move and resize windows in macOS using keyboard shortcuts or snap areas
-cask 'sequel-ace'                   # Sequel Ace
+cask 'beekeeper-studio'             # Beekeeper Studio
 cask 'slack'                        # Slack chats
 cask 'sublime-text'                 # Text editor
 
