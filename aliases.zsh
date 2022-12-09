@@ -16,9 +16,10 @@ alias sshf='ssh -o ForwardAgent=yes'
 alias sää='clear && curl http://wttr.in/Lohja\?n\&lang\=fi'
 alias ytunnus='echo "FI24917892" | pbcopy'
 alias m='make'
-alias php7.4='echo "🐘 Switch PHP version..." && { brew unlink php@8.0 php@8.1 && brew link php@7.4 -f -q --overwrite } &> /dev/null && php -v'
-alias php8.0='echo "🐘 Switch PHP version..." && { brew unlink php@7.4 php@8.1 && brew link php@8.0 -f -q --overwrite } &> /dev/null && php -v'
-alias php8.1='echo "🐘 Switch PHP version..." && { brew unlink php@7.4 php@8.0 && brew link php@8.1 -f -q --overwrite } &> /dev/null && php -v'
+alias php7.4='echo "🐘 Switch PHP version..." && { brew unlink php@8.0 php@8.1 php@8.2 && brew link php@7.4 -f -q --overwrite } &> /dev/null && php -v'
+alias php8.0='echo "🐘 Switch PHP version..." && { brew unlink php@7.4 php@8.1 php@8.2 && brew link php@8.0 -f -q --overwrite } &> /dev/null && php -v'
+alias php8.1='echo "🐘 Switch PHP version..." && { brew unlink php@7.4 php@8.0 php@8.2 && brew link php@8.1 -f -q --overwrite } &> /dev/null && php -v'
+alias php8.2='echo "🐘 Switch PHP version..." && { brew unlink php@7.4 php@8.0 php@8.1 && brew link php@8.2 -f -q --overwrite } &> /dev/null && php -v'
 alias ls="exa"
 alias la="exa --long --all --group"
 alias http="http --verify no"

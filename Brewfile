@@ -28,11 +28,13 @@ brew 'yarn'
 #brew 'terraform'                    # Tool to build, change, and version infrastructure
 
 # Development
-
-brew 'php'                          # PHP 8.1
-brew 'php@8.0'                      # PHP 8.0
-brew 'php@7.4'                      # PHP 7.4
+tap 'shivammathur/php'
+brew 'shivammathur/php/php@7.4'     # PHP 7.4
+brew 'shivammathur/php/php@8.0'     # PHP 8.0
+brew 'shivammathur/php/php@8.1'     # PHP 8.1
+brew 'shivammathur/php/php@8.2'     # PHP 8.2
 brew 'composer'                     # Composer
+brew 'gpatch'                       # GNU patch
 
 # Apps
 
