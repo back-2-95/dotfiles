@@ -15,26 +15,24 @@ brew 'git'                          # Git (replace the one from Apple)
 brew 'httpie'                       # User-friendly cURL replacement (command-line HTTP client)
 brew 'mkcert'                       # Simple tool to make locally trusted development certificates
 brew 'nvm'                          # Manage multiple Node.js versions
-brew 'aquasecurity/trivy/trivy'     # Vulnerability Scanner for Containers and other Artifacts, Suitable for CI.
-brew 'exa'
-brew 'mycli'
-brew 'yarn'
+brew 'exa'                          # A modern replacement for ls: https://the.exa.website/
+brew 'mycli'                        # Alternative MySQL client
+brew 'yarn'                         # JS package manager
+brew 'gpatch'                       # GNU patch
 
-#tap 'drud/ddev'
-#brew 'drud/ddev/ddev'               # ddev: a local development environment management system
+#brew 'aquasecurity/trivy/trivy'     # Vulnerability Scanner for Containers and other Artifacts, Suitable for CI.
 #brew 'mackup'                       # Keep your Mac's application settings in sync
-#brew 'mysql'                        # MySQL
 #brew 'nss'                          # Libraries for security-enabled client and server applications
 #brew 'terraform'                    # Tool to build, change, and version infrastructure
 
 # Development
+
 tap 'shivammathur/php'
 brew 'shivammathur/php/php@7.4'     # PHP 7.4
 brew 'shivammathur/php/php@8.0'     # PHP 8.0
 brew 'shivammathur/php/php@8.1'     # PHP 8.1
 brew 'shivammathur/php/php@8.2'     # PHP 8.2
 brew 'composer'                     # Composer
-brew 'gpatch'                       # GNU patch
 
 # Apps
 
@@ -51,6 +49,7 @@ cask 'slack'                        # Slack chats
 cask 'sublime-text'                 # Text editor
 
 # Additional apps
+
 #cask 'steam'                        # Steam
 #cask 'transmission'                 # Torrent client
-#cask 'tunnelblick'                  # VPN for Helsinki University
+cask 'tunnelblick'                  # VPN for Helsinki University
