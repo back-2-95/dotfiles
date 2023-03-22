@@ -11,7 +11,7 @@ These are my dotfiles for settings up my macOS from scratch.
 
 ### Oneliner
 
-```
+```shell
 sh -c "$(curl -fsSL https://git.io/JvrDa)"
 ```
 
@@ -21,13 +21,13 @@ Source: https://raw.githubusercontent.com/back-2-95/dotfiles/master/install.sh
 
 Clone this repository to `~/dotfiles`:
 
-```
+```shell
 git clone https://github.com/back-2-95/dotfiles.git ~/dotfiles
 ```
 
 Start the setup:
 
-```
+```shell
 cd ~/dotfiles && source install.sh
 ```
 
