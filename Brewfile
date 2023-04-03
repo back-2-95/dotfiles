@@ -28,7 +28,6 @@ brew 'gpatch'                       # GNU patch
 # Development
 
 tap 'shivammathur/php'
-brew 'shivammathur/php/php@7.4'     # PHP 7.4
 brew 'shivammathur/php/php@8.0'     # PHP 8.0
 brew 'shivammathur/php/php@8.1'     # PHP 8.1
 brew 'shivammathur/php/php@8.2'     # PHP 8.2
