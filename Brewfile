@@ -10,13 +10,13 @@ tap 'amazeeio/lagoon-cli'
 brew 'amazeeio/lagoon-cli/lagoon'   # Command line tool for interacting with a Lagoon API
 brew 'ansible'                      # Automate deployment, configuration, and upgrading
 brew 'doctl'                        # Command-line tool for DigitalOcean
+brew 'exa'                          # A modern replacement for ls: https://the.exa.website/
 brew 'gh'                           # Github CLI
 brew 'git'                          # Git (replace the one from Apple)
 brew 'httpie'                       # User-friendly cURL replacement (command-line HTTP client)
 brew 'mkcert'                       # Simple tool to make locally trusted development certificates
 brew 'nvm'                          # Manage multiple Node.js versions
-brew 'exa'                          # A modern replacement for ls: https://the.exa.website/
-brew 'mycli'                        # Alternative MySQL client
+brew 'openssh'                      # Better SSH client
 brew 'yarn'                         # JS package manager
 brew 'gpatch'                       # GNU patch
 
@@ -31,11 +31,12 @@ tap 'shivammathur/php'
 brew 'shivammathur/php/php@8.0'     # PHP 8.0
 brew 'shivammathur/php/php@8.1'     # PHP 8.1
 brew 'shivammathur/php/php@8.2'     # PHP 8.2
+brew 'shivammathur/php/php@8.3'     # PHP 8.3
 brew 'composer'                     # Composer
 
 # Apps
 
-cask 'docker'                       # Docker for Mac
+cask 'orbstack'                     # Orbstack Docker
 cask 'firefox'                      # Firefox browser
 cask 'google-chrome'                # Google Chrome Browser
 cask 'istat-menus'                  # iStats Menus 6
@@ -46,9 +47,9 @@ cask 'rectangle'                    # Move and resize windows in macOS using key
 cask 'beekeeper-studio'             # Beekeeper Studio
 cask 'slack'                        # Slack chats
 cask 'sublime-text'                 # Text editor
+cask 'tunnelblick'                  # VPN for Helsinki University
 
 # Additional apps
 
 #cask 'steam'                        # Steam
 #cask 'transmission'                 # Torrent client
-cask 'tunnelblick'                  # VPN for Helsinki University
