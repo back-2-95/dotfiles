@@ -10,7 +10,7 @@ tap 'amazeeio/lagoon-cli'
 brew 'amazeeio/lagoon-cli/lagoon'   # Command line tool for interacting with a Lagoon API
 brew 'ansible'                      # Automate deployment, configuration, and upgrading
 brew 'doctl'                        # Command-line tool for DigitalOcean
-brew 'exa'                          # A modern replacement for ls: https://the.exa.website/
+brew 'eza'                          # A modern replacement for ls: https://eza.rocks/
 brew 'gh'                           # Github CLI
 brew 'git'                          # Git (replace the one from Apple)
 brew 'httpie'                       # User-friendly cURL replacement (command-line HTTP client)
@@ -28,7 +28,6 @@ brew 'gpatch'                       # GNU patch
 # Development
 
 tap 'shivammathur/php'
-brew 'shivammathur/php/php@8.0'     # PHP 8.0
 brew 'shivammathur/php/php@8.1'     # PHP 8.1
 brew 'shivammathur/php/php@8.2'     # PHP 8.2
 brew 'shivammathur/php/php@8.3'     # PHP 8.3
@@ -36,6 +35,7 @@ brew 'composer'                     # Composer
 
 # Apps
 
+cask '1password-cli'                # 1password CLI
 cask 'orbstack'                     # Orbstack Docker
 cask 'firefox'                      # Firefox browser
 cask 'google-chrome'                # Google Chrome Browser
