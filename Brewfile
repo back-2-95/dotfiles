@@ -6,6 +6,7 @@
 # Binaries
 
 tap 'amazeeio/lagoon-cli'
+tap 'hashicorp/tap'
 
 brew 'amazeeio/lagoon-cli/lagoon'   # Command line tool for interacting with a Lagoon API
 brew 'ansible'                      # Automate deployment, configuration, and upgrading
@@ -13,6 +14,7 @@ brew 'doctl'                        # Command-line tool for DigitalOcean
 brew 'eza'                          # A modern replacement for ls: https://eza.rocks/
 brew 'gh'                           # Github CLI
 brew 'git'                          # Git (replace the one from Apple)
+brew 'hashicorp/tap/terraform'      # Tool to build, change, and version infrastructure
 brew 'httpie'                       # User-friendly cURL replacement (command-line HTTP client)
 brew 'mkcert'                       # Simple tool to make locally trusted development certificates
 brew 'nvm'                          # Manage multiple Node.js versions
@@ -23,7 +25,6 @@ brew 'gpatch'                       # GNU patch
 #brew 'aquasecurity/trivy/trivy'     # Vulnerability Scanner for Containers and other Artifacts, Suitable for CI.
 #brew 'mackup'                       # Keep your Mac's application settings in sync
 #brew 'nss'                          # Libraries for security-enabled client and server applications
-#brew 'terraform'                    # Tool to build, change, and version infrastructure
 
 # Development
 
