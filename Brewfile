@@ -31,6 +31,7 @@ tap 'shivammathur/php'
 brew 'shivammathur/php/php@8.1'     # PHP 8.1
 brew 'shivammathur/php/php@8.2'     # PHP 8.2
 brew 'shivammathur/php/php@8.3'     # PHP 8.3
+brew 'shivammathur/php/php@8.4'     # PHP 8.4
 brew 'composer'                     # Composer
 
 # Apps
