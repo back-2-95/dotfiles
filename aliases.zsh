@@ -20,14 +20,12 @@ alias ytunnus='echo "FI24917892" | pbcopy'
 alias m='make'
 alias ansible9='echo "Switch Ansible version to 2.16..." && { brew unlink ansible && brew link ansible@9 -f -q --overwrite } &> /dev/null && ansible --version'
 alias ansible10='echo "Switch Ansible version to 2.17..." && { brew unlink ansible@9 && brew link ansible -f -q --overwrite } &> /dev/null && ansible --version'
-alias php8.1='echo "🐘 Switch PHP version to 8.1..." && { brew unlink shivammathur/php/php@8.2 shivammathur/php/php@8.3 shivammathur/php/php@8.4 && brew link shivammathur/php/php@8.1 -f -q --overwrite } &> /dev/null && php -v'
-alias php8.2='echo "🐘 Switch PHP version to 8.2..." && { brew unlink shivammathur/php/php@8.1 shivammathur/php/php@8.3 shivammathur/php/php@8.4 && brew link shivammathur/php/php@8.2 -f -q --overwrite } &> /dev/null && php -v'
-alias php8.3='echo "🐘 Switch PHP version to 8.3..." && { brew unlink shivammathur/php/php@8.1 shivammathur/php/php@8.2 shivammathur/php/php@8.4 && brew link shivammathur/php/php@8.3 -f -q --overwrite } &> /dev/null && php -v'
-alias php8.4='echo "🐘 Switch PHP version to 8.4..." && { brew unlink shivammathur/php/php@8.1 shivammathur/php/php@8.2 shivammathur/php/php@8.3 && brew link shivammathur/php/php@8.4 -f -q --overwrite } &> /dev/null && php -v'
+alias php8.2='echo "🐘 Switch PHP version to 8.2..." && { brew unlink shivammathur/php/php@{8.3,8.4} && brew link shivammathur/php/php@8.2 -f -q --overwrite } &> /dev/null && php -v'
+alias php8.3='echo "🐘 Switch PHP version to 8.3..." && { brew unlink shivammathur/php/php@{8.2,8.4} && brew link shivammathur/php/php@8.3 -f -q --overwrite } &> /dev/null && php -v'
+alias php8.4='echo "🐘 Switch PHP version to 8.4..." && { brew unlink shivammathur/php/php@{8.2,8.3} && brew link shivammathur/php/php@8.4 -f -q --overwrite } &> /dev/null && php -v'
 alias ls="eza --long --group"
 alias la="eza --long --all --group"
 alias http="http --verify no"
 alias 2dev="git checkout dev && git pull"
 alias 2main="git checkout main && git pull"
-alias bastion="ssh -p 222 druid@bastion.druid.fi"
 alias tofu="op run --env-file=\"./.env.opentofu\" -- tofu -chdir=terraform"
