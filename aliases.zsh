@@ -13,7 +13,7 @@ alias docker-remove-dangling='docker rmi $(docker images --quiet --filter "dangl
 alias docker-r-v='docker volume rm `docker volume ls -q -f dangling=true`'
 alias bubo='brew update && brew outdated'
 alias bubc='brew upgrade && brew cleanup'
-alias bubu='bubo && bubc'
+alias bubu='bubo && bubc && brew doctor'
 alias sshf='ssh -o ForwardAgent=yes'
 alias sää='clear && curl http://wttr.in/Lohja\?n\&lang\=fi'
 alias ytunnus='echo "FI24917892" | pbcopy'
