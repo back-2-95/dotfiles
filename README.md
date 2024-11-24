@@ -4,7 +4,7 @@ These are my dotfiles for settings up my macOS from scratch.
 
 ## Requirements
 
-- Clean install of macOS
+- Clean installation of macOS
 - Logged in with Apple ID
 
 ## Setting up your Mac
