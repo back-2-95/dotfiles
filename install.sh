@@ -70,6 +70,9 @@ ln -sfn $DOTFILES_FOLDER/.zshrc $HOME/.zshrc
 step "Symlink .p10k.zsh to $HOME/.p10k.zsh"
 ln -sfn $DOTFILES_FOLDER/.p10k.zsh $HOME/.p10k.zsh
 
+step "Configure p10k"
+p10k configure
+
 step "Symlink .gitconfig to $HOME/.ssh/config"
 ln -sfn $DOTFILES_FOLDER/.ssh.config $HOME/.ssh/config
 
@@ -77,11 +80,11 @@ step "Symlink .gitconfig to $HOME/.gitconfig"
 ln -sfn $DOTFILES_FOLDER/.gitconfig $HOME/.gitconfig
 
 # Symlink the Mackup config file to the home directory
-step "Symlink .mackup.cfg to $HOME/.mackup.cfg"
-ln -sfn $DOTFILES_FOLDER/.mackup.cfg $HOME/.mackup.cfg
+#step "Symlink .mackup.cfg to $HOME/.mackup.cfg"
+#ln -sfn $DOTFILES_FOLDER/.mackup.cfg $HOME/.mackup.cfg
 
 step "Install latest LTS node"
-nvm install --lts
+#nvm install --lts
 
 step "Create projects folder $PROJECTS_FOLDER ..."
 if [ -d "$PROJECTS_FOLDER" ]; then

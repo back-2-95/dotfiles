@@ -31,10 +31,6 @@ Start the setup:
 cd ~/dotfiles && source install.sh
 ```
 
-## Fonts
-
-Install Meslo Nerd Font from https://github.com/romkatv/powerlevel10k#manual-font-installation
-
 ## Secrets
 
 To add any secrets like `AWS_ACCESS_KEY` or `DIGITALOCEAN_TOKEN` add `~/dotfiles/secrets.zsh` and export your
