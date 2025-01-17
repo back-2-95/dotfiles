@@ -14,12 +14,14 @@ brew 'eza'                          # A modern replacement for ls: https://eza.r
 brew 'gh'                           # Github CLI
 brew 'git'                          # Git (replace the one from Apple)
 brew 'httpie'                       # User-friendly cURL replacement (command-line HTTP client)
+brew 'jq'                           #
 brew 'mkcert'                       # Simple tool to make locally trusted development certificates
 brew 'nvm'                          # Manage multiple Node.js versions
 brew 'openssh'                      # Better SSH client
 brew 'opentofu'                     # Tool to build, change, and version infrastructure
 brew 'yarn'                         # JS package manager
 brew 'gpatch'                       # GNU patch
+brew 'yq'                           #
 
 #brew 'aquasecurity/trivy/trivy'     # Vulnerability Scanner for Containers and other Artifacts, Suitable for CI.
 #brew 'mackup'                       # Keep your Mac's application settings in sync
@@ -39,15 +41,17 @@ cask '1password-cli'                # 1password CLI
 cask 'orbstack'                     # Orbstack Docker
 cask 'firefox'                      # Firefox browser
 cask 'google-chrome'                # Google Chrome Browser
-cask 'istat-menus'                  # iStats Menus 6
+#cask 'istat-menus'                  # iStats Menus 6
 cask 'iterm2'                       # Terminal
 cask 'keepingyouawake'              # KeepingYouAwake
 cask 'phpstorm'                     # IDE
 cask 'rectangle'                    # Move and resize windows in macOS using keyboard shortcuts or snap areas
 cask 'beekeeper-studio'             # Beekeeper Studio
 cask 'slack'                        # Slack chats
-cask 'sublime-text'                 # Text editor
-cask 'tunnelblick'                  # VPN for Helsinki University
+cask 'bruno'                        # API client
+cask 'transmit'                     # File transfer app
+#cask 'sublime-text'                 # Text editor
+#cask 'tunnelblick'                  # VPN for Helsinki University
 
 # Additional apps
 
