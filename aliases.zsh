@@ -25,7 +25,6 @@ alias php8.3='echo "🐘 Switch PHP version to 8.3..." && { brew unlink php shiv
 alias php8.4='echo "🐘 Switch PHP version to 8.4..." && { brew unlink shivammathur/php/php@{8.2,8.3} && brew link php -f -q --overwrite } &> /dev/null && php -v'
 alias ls="eza --long --group"
 alias la="eza --long --all --group"
-alias http="http --verify no"
 alias 2dev="git checkout dev && git pull"
 alias 2main="git checkout main && git pull"
 alias tofu="op run --env-file=\"./.env.opentofu\" -- tofu -chdir=tofu"

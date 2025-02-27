@@ -1,4 +1,5 @@
 .idea
+httpie/version_info.json
 themes/powerlevel10k
 Brewfile.lock.json
 secrets.zsh
