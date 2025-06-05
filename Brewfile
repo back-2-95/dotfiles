@@ -1,59 +1,109 @@
+# =============================================================================
+# Brewfile - Managed Package Configuration
+# =============================================================================
 #
 # How to use:
-# Run 'brew bundle' in the same folder as this file.
+# Run 'brew bundle' in the same folder as this file to install all packages.
 #
+# Sections:
+# - Taps: External repositories
+# - Command Line Tools: General utilities and CLI tools
+# - Development Tools: Programming languages and development utilities
+# - DevOps Tools: Infrastructure and deployment tools
+# - Productivity Apps: Applications for daily work
+# - Browsers: Web browsers
+# - Communication: Chat and communication tools
+# - Utilities: System utilities and helpers
+# - Media & Entertainment: Media players and entertainment apps
+# =============================================================================
 
-# Binaries
+# =============================================================================
+# Taps - External repositories
+# =============================================================================
 
-tap 'amazeeio/lagoon-cli'
+tap 'amazeeio/lagoon-cli'           # Lagoon CLI repository
+tap 'shivammathur/php'              # PHP version manager repository
 
-brew 'amazeeio/lagoon-cli/lagoon'   # Command line tool for interacting with a Lagoon API
-brew 'ansible'                      # Automate deployment, configuration, and upgrading
-brew 'doctl'                        # Command-line tool for DigitalOcean
+# =============================================================================
+# Command Line Tools - General utilities and CLI tools
+# =============================================================================
+
 brew 'eza'                          # A modern replacement for ls: https://eza.rocks/
-brew 'gh'                           # Github CLI
-brew 'git'                          # Git (replace the one from Apple)
-brew 'httpie'                       # User-friendly cURL replacement (command-line HTTP client)
-brew 'jq'                           #
-brew 'mkcert'                       # Simple tool to make locally trusted development certificates
-brew 'nvm'                          # Manage multiple Node.js versions
-brew 'openssh'                      # Better SSH client
-brew 'opentofu'                     # Tool to build, change, and version infrastructure
-brew 'yarn'                         # JS package manager
-brew 'gpatch'                       # GNU patch
-brew 'yq'                           #
+brew 'git'                          # Distributed version control system
+brew 'gpatch'                       # GNU patch for applying diffs to files
+brew 'httpie'                       # User-friendly cURL replacement (HTTP client)
+brew 'jq'                           # Command-line JSON processor
+brew 'openssh'                      # OpenSSH remote login client
+brew 'yq'                           # Command-line YAML processor
 
-#brew 'aquasecurity/trivy/trivy'     # Vulnerability Scanner for Containers and other Artifacts, Suitable for CI.
-#brew 'mackup'                       # Keep your Mac's application settings in sync
-#brew 'nss'                          # Libraries for security-enabled client and server applications
+# =============================================================================
+# Development Tools - Programming languages and development utilities
+# =============================================================================
 
-# Development
+# PHP
+brew 'shivammathur/php/php@8.3'     # PHP 8.3 interpreter
+brew 'shivammathur/php/php@8.4'     # PHP 8.4 interpreter
+#brew 'php'                          # Latest PHP version
+#brew 'composer'                     # Dependency manager for PHP
 
-tap 'shivammathur/php'
-brew 'shivammathur/php/php@8.3'     # PHP 8.3
-brew 'shivammathur/php/php@8.4'     # PHP 8.4
-#brew 'php'                          # PHP 8.4
-#brew 'composer'                     # Composer
+# JavaScript/Node.js
+brew 'nvm'                          # Node Version Manager
+brew 'yarn'                         # JavaScript package manager
 
-# Apps
+# Development Utilities
+brew 'gh'                           # GitHub CLI tool
+brew 'mkcert'                       # Tool for making locally-trusted certificates
 
-cask '1password-cli'                # 1password CLI
-cask 'orbstack'                     # Orbstack Docker
-cask 'firefox'                      # Firefox browser
-cask 'google-chrome'                # Google Chrome Browser
-#cask 'istat-menus'                  # iStats Menus 6
-cask 'iterm2'                       # Terminal
-cask 'keepingyouawake'              # KeepingYouAwake
-cask 'phpstorm'                     # IDE
-cask 'rectangle'                    # Move and resize windows in macOS using keyboard shortcuts or snap areas
-cask 'beekeeper-studio'             # Beekeeper Studio
-cask 'slack'                        # Slack chats
-cask 'bruno'                        # API client
-cask 'transmit'                     # File transfer app
-#cask 'sublime-text'                 # Text editor
-#cask 'tunnelblick'                  # VPN for Helsinki University
+# =============================================================================
+# DevOps Tools - Infrastructure and deployment tools
+# =============================================================================
 
-# Additional apps
+brew 'amazeeio/lagoon-cli/lagoon'   # CLI for interacting with Lagoon API
+brew 'ansible'                      # IT automation platform
+brew 'doctl'                        # Command-line tool for DigitalOcean
+brew 'opentofu'                     # Infrastructure as code tool (Terraform fork)
+#brew 'aquasecurity/trivy/trivy'     # Vulnerability Scanner for containers
 
-#cask 'steam'                        # Steam
-#cask 'transmission'                 # Torrent client
+# =============================================================================
+# Productivity Apps - Applications for daily work
+# =============================================================================
+
+cask 'iterm2'                       # Terminal emulator
+cask 'phpstorm'                     # PHP IDE by JetBrains
+cask 'beekeeper-studio'             # SQL client and database manager
+cask 'bruno'                        # API client for testing and debugging
+cask 'rectangle'                    # Window management tool
+cask 'transmit'                     # File transfer client (FTP, SFTP, S3)
+#cask 'sublime-text'                 # Sophisticated text editor
+
+# =============================================================================
+# Browsers - Web browsers
+# =============================================================================
+
+cask 'firefox'                      # Mozilla Firefox web browser
+cask 'google-chrome'                # Google Chrome web browser
+
+# =============================================================================
+# Communication - Chat and communication tools
+# =============================================================================
+
+cask 'slack'                        # Team communication and collaboration
+
+# =============================================================================
+# Utilities - System utilities and helpers
+# =============================================================================
+
+cask '1password-cli'                # Command-line interface for 1Password
+cask 'keepingyouawake'              # Prevents Mac from sleeping
+cask 'orbstack'                     # Docker and Linux container manager
+#cask 'istat-menus'                  # System monitoring tool
+#cask 'tunnelblick'                  # OpenVPN client
+#brew 'mackup'                       # Keep application settings in sync
+#brew 'nss'                          # Network Security Services libraries
+
+# =============================================================================
+# Media & Entertainment - Media players and entertainment apps
+# =============================================================================
+
+#cask 'steam'                        # Gaming platform
+#cask 'transmission'                 # BitTorrent client
