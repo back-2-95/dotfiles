@@ -4,10 +4,10 @@ This document contains a detailed list of actionable improvement tasks for the d
 
 ## Code Organization
 
-1. [ ] Refactor install.sh to use functions for better organization and readability
-2. [ ] Create a consistent structure for shell scripts with header comments and usage information
-3. [ ] Organize Brewfile into more logical sections with clearer comments
-4. [ ] Move all environment variable definitions to .env file instead of spreading across multiple files
+1. [x] Refactor install.sh to use functions for better organization and readability
+2. [x] Create a consistent structure for shell scripts with header comments and usage information
+3. [x] Organize Brewfile into more logical sections with clearer comments
+4. [x] Move all environment variable definitions to .env file instead of spreading across multiple files
 5. [ ] Create a modular structure for zsh configurations (separate files for completions, key bindings, etc.)
 6. [ ] Implement a plugin system for easily enabling/disabling features
 
@@ -15,14 +15,14 @@ This document contains a detailed list of actionable improvement tasks for the d
 
 7. [ ] Expand README.md with more detailed information about the repository's purpose and structure
 8. [ ] Add a CONTRIBUTING.md file with guidelines for contributing to the repository
-9. [ ] Document each shell script with comments explaining what it does and how to use it
+9. [x] Document each shell script with comments explaining what it does and how to use it
 10. [ ] Create a changelog to track changes to the repository
 11. [ ] Add documentation for each alias explaining its purpose and usage
 12. [ ] Create a troubleshooting guide for common issues
 
 ## Error Handling
 
-13. [ ] Add error handling to install.sh for failed commands
+13. [x] Add error handling to install.sh for failed commands
 14. [ ] Implement checks for required dependencies before running scripts
 15. [ ] Add validation for environment variables to ensure they're properly set
 16. [ ] Create fallback mechanisms for when commands or tools are not available
@@ -70,8 +70,8 @@ This document contains a detailed list of actionable improvement tasks for the d
 
 ## Specific Improvements
 
-43. [ ] Fix the commented out nvm install command in install.sh
-44. [ ] Define PROJECTS_FOLDER in install.sh if .env doesn't exist
+43. [x] Fix the commented out nvm install command in install.sh
+44. [x] Define PROJECTS_FOLDER in install.sh if .env doesn't exist
 45. [ ] Uncomment and update the macOS preferences script for Big Sur and newer versions
 46. [ ] Add more Oh My Zsh plugins for improved functionality
 47. [ ] Create a script to automatically update all installed packages
