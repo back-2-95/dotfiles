@@ -30,10 +30,10 @@ brew 'yq'                           #
 # Development
 
 tap 'shivammathur/php'
-brew 'shivammathur/php/php@8.2'     # PHP 8.2
 brew 'shivammathur/php/php@8.3'     # PHP 8.3
-brew 'php'                          # PHP 8.4
-brew 'composer'                     # Composer
+brew 'shivammathur/php/php@8.4'     # PHP 8.4
+#brew 'php'                          # PHP 8.4
+#brew 'composer'                     # Composer
 
 # Apps
 
