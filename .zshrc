@@ -122,6 +122,3 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
 
 export PATH="/opt/homebrew/opt/mysql-client/bin:$PATH"
-
-# 1password plugins
-source "$HOME/.config/op/plugins.sh"
