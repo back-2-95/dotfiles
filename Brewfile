@@ -72,6 +72,7 @@ cask 'iterm2'                       # Terminal emulator
 cask 'phpstorm'                     # PHP IDE by JetBrains
 cask 'beekeeper-studio'             # SQL client and database manager
 cask 'bruno'                        # API client for testing and debugging
+cask 'obsidian'                     # Note taking tool
 cask 'rectangle'                    # Window management tool
 cask 'transmit'                     # File transfer client (FTP, SFTP, S3)
 #cask 'sublime-text'                 # Sophisticated text editor
