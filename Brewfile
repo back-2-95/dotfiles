@@ -43,8 +43,8 @@ brew 'yq'                           # Command-line YAML processor
 # PHP
 brew 'shivammathur/php/php@8.3'     # PHP 8.3 interpreter
 brew 'shivammathur/php/php@8.4'     # PHP 8.4 interpreter
-#brew 'php'                          # Latest PHP version
-#brew 'composer'                     # Dependency manager for PHP
+brew 'shivammathur/php/php@8.5'     # PHP 8.5 interpreter
+brew 'composer'                     # Dependency manager for PHP
 
 # JavaScript/Node.js
 brew 'nvm'                          # Node Version Manager
