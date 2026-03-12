@@ -14,7 +14,7 @@ export NVM_DIR
 export LS_COLORS
 
 # Set PATH with exported variables
-export PATH="$HOME/.local/bin:$PATH;$GEM_HOME/bin:$PATH:${GOPATH}/bin:${GOROOT}/bin"
+export PATH="$HOME/.local/bin:$GEM_HOME/bin:${GOPATH}/bin:${GOROOT}/bin:$PATH"
 
 # Load NVM
 # This loads nvm
