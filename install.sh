@@ -167,6 +167,13 @@ create_symlinks() {
     return 1
   }
 
+  step "Symlink agents/claude/settings.json to $HOME/.claude/settings.json"
+  mkdir -p $HOME/.claude
+  ln -sfn $DOTFILES_FOLDER/agents/claude/settings.json $HOME/.claude/settings.json || {
+    error "Failed to create symlink for .claude/settings.json"
+    return 1
+  }
+
   # Symlink the Mackup config file to the home directory
   #step "Symlink .mackup.cfg to $HOME/.mackup.cfg"
   #ln -sfn $DOTFILES_FOLDER/.mackup.cfg $HOME/.mackup.cfg
