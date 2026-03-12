@@ -124,4 +124,4 @@ export NVM_DIR="$HOME/.nvm"
 export PATH="/opt/homebrew/opt/mysql-client/bin:$PATH"
 
 # Added by Antigravity
-export PATH="/Users/marko.korhonen/.antigravity/antigravity/bin:$PATH"
+export PATH="$HOME/.antigravity/antigravity/bin:$PATH"
