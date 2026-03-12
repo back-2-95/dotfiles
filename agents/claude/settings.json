@@ -32,7 +32,19 @@
       "Bash(composer dump-autoload:*)",
       "Bash(composer run:*)",
       "Bash(make:*)",
-      "Bash(gh:*)",
+      "Bash(gh pr list:*)",
+      "Bash(gh pr view:*)",
+      "Bash(gh pr diff:*)",
+      "Bash(gh pr checks:*)",
+      "Bash(gh pr status:*)",
+      "Bash(gh issue list:*)",
+      "Bash(gh issue view:*)",
+      "Bash(gh issue status:*)",
+      "Bash(gh run list:*)",
+      "Bash(gh run view:*)",
+      "Bash(gh repo view:*)",
+      "Bash(gh release list:*)",
+      "Bash(gh release view:*)",
       "Bash(ls:*)",
       "Bash(cd:*)",
       "Bash(done:*)",
@@ -64,7 +76,8 @@
       "Bash(docker rmi:*)",
       "Bash(docker system prune:*)",
       "Bash(docker compose restart:*)",
-      "Bash(rm:*)"
+      "Bash(rm:*)",
+      "Bash(gh:*)"
     ]
   }
 }
