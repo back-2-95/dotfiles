@@ -31,8 +31,6 @@ Personal macOS dotfiles for bootstrapping a development environment.
 
 ## Known open issues (low priority)
 
-- `aliases.zsh:1` — `.env` sourced without an existence check; will error on fresh install before dotfiles are cloned
-- `.zshrc:1-2` — Fig integration is dead code (Fig discontinued Dec 2024); safe to remove
 - `install.sh:158` — `p10k configure` is interactive and will block any non-interactive run
 - `Brewfile` — `1password` GUI app not listed (required for SSH agent in `.ssh.config`); likely installed via App Store
 - `Brewfile` — PHP 8.5 is pre-release; intentional for testing but worth a comment
