@@ -73,6 +73,7 @@ cask 'phpstorm'                     # PHP IDE by JetBrains
 cask 'beekeeper-studio'             # SQL client and database manager
 cask 'bruno'                        # API client for testing and debugging
 cask 'obsidian'                     # Note taking tool
+cask 'raycast'                      # Spotlight replacement / launcher
 cask 'rectangle'                    # Window management tool
 cask 'transmit'                     # File transfer client (FTP, SFTP, S3)
 #cask 'sublime-text'                 # Sophisticated text editor
@@ -81,6 +82,7 @@ cask 'transmit'                     # File transfer client (FTP, SFTP, S3)
 # Browsers - Web browsers
 # =============================================================================
 
+cask 'brave-browser'                # Brave web browser
 cask 'firefox'                      # Mozilla Firefox web browser
 cask 'google-chrome'                # Google Chrome web browser
 
@@ -89,6 +91,7 @@ cask 'google-chrome'                # Google Chrome web browser
 # =============================================================================
 
 cask 'slack'                        # Team communication and collaboration
+cask 'telegram'                     # Messaging app
 
 # =============================================================================
 # Utilities - System utilities and helpers
@@ -97,6 +100,7 @@ cask 'slack'                        # Team communication and collaboration
 cask '1password'                    # Password manager (required for SSH agent)
 cask '1password-cli'                # Command-line interface for 1Password
 cask 'git-credential-manager'      # Git Credential Manager (Azure DevOps, etc.)
+cask 'dtop'                         # System monitor
 cask 'keepingyouawake'              # Prevents Mac from sleeping
 cask 'orbstack'                     # Docker and Linux container manager
 #cask 'istat-menus'                  # System monitoring tool
@@ -108,5 +112,6 @@ cask 'orbstack'                     # Docker and Linux container manager
 # Media & Entertainment - Media players and entertainment apps
 # =============================================================================
 
+cask 'spotify'                      # Music streaming
 #cask 'steam'                        # Gaming platform
 #cask 'transmission'                 # BitTorrent client
