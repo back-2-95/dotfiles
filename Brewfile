@@ -94,6 +94,7 @@ cask 'slack'                        # Team communication and collaboration
 # Utilities - System utilities and helpers
 # =============================================================================
 
+cask '1password'                    # Password manager (required for SSH agent)
 cask '1password-cli'                # Command-line interface for 1Password
 cask 'git-credential-manager'      # Git Credential Manager (Azure DevOps, etc.)
 cask 'keepingyouawake'              # Prevents Mac from sleeping

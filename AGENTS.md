@@ -31,5 +31,3 @@ Personal macOS dotfiles for bootstrapping a development environment.
 
 ## Known open issues (low priority)
 
-- `Brewfile` — `1password` GUI app not listed (required for SSH agent in `.ssh.config`); likely installed via App Store
-- `Brewfile` — PHP 8.5 is pre-release; intentional for testing but worth a comment
