@@ -32,7 +32,6 @@ Personal macOS dotfiles for bootstrapping a development environment.
 ## Known open issues (low priority)
 
 - `aliases.zsh:1` — `.env` sourced without an existence check; will error on fresh install before dotfiles are cloned
-- `.env:26` — `GOROOT` uses `$(brew --prefix golang)` which runs `brew` on every shell start (~150ms penalty); consider hardcoding
 - `.zshrc:1-2` — Fig integration is dead code (Fig discontinued Dec 2024); safe to remove
 - `install.sh:158` — `p10k configure` is interactive and will block any non-interactive run
 - `Brewfile` — `1password` GUI app not listed (required for SSH agent in `.ssh.config`); likely installed via App Store
