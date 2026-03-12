@@ -95,6 +95,7 @@ cask 'slack'                        # Team communication and collaboration
 # =============================================================================
 
 cask '1password-cli'                # Command-line interface for 1Password
+cask 'git-credential-manager'      # Git Credential Manager (Azure DevOps, etc.)
 cask 'keepingyouawake'              # Prevents Mac from sleeping
 cask 'orbstack'                     # Docker and Linux container manager
 #cask 'istat-menus'                  # System monitoring tool
