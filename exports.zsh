@@ -16,8 +16,3 @@ export LS_COLORS
 # Set PATH with exported variables
 export PATH="$HOME/.local/bin:$GEM_HOME/bin:${GOPATH}/bin:${GOROOT}/bin:$PATH"
 
-# Load NVM
-# This loads nvm
-[ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"
-# This loads nvm bash_completion
-#[ -s "/usr/local/opt/nvm/etc/bash_completion.d/nvm" ] && . "/usr/local/opt/nvm/etc/bash_completion.d/nvm"

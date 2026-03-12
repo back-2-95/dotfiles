@@ -8,8 +8,7 @@ Personal macOS dotfiles for bootstrapping a development environment.
 |---|---|
 | `install.sh` | Bootstrap script — runs once on a new machine |
 | `aliases.zsh` | Shell aliases; sources `.env` at the top |
-| `exports.zsh` | PATH and `export` declarations; depends on `.env` being sourced first |
-| `exports.zsh` | PATH and export declarations (depends on aliases.zsh sourcing .env first) |
+| `exports.zsh` | PATH and `export` declarations; depends on `.env` being sourced first (alphabetical load order) |
 | `.env` | Non-secret environment variables (committed) |
 | `secrets.zsh` | Secret env vars — gitignored, never commit |
 | `.zshrc` | Main zsh config; symlinked to `~/.zshrc` |
@@ -35,7 +34,6 @@ Personal macOS dotfiles for bootstrapping a development environment.
 - `aliases.zsh:1` — `.env` sourced without an existence check; will error on fresh install before dotfiles are cloned
 - `.env:26` — `GOROOT` uses `$(brew --prefix golang)` which runs `brew` on every shell start (~150ms penalty); consider hardcoding
 - `.zshrc:1-2` — Fig integration is dead code (Fig discontinued Dec 2024); safe to remove
-- `.zshrc` + `exports.zsh` — NVM loaded twice: ARM path in `.zshrc`, dead Intel path in `exports.zsh`
 - `install.sh:158` — `p10k configure` is interactive and will block any non-interactive run
 - `Brewfile` — `1password` GUI app not listed (required for SSH agent in `.ssh.config`); likely installed via App Store
 - `Brewfile` — PHP 8.5 is pre-release; intentional for testing but worth a comment
