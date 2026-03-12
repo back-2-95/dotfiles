@@ -76,7 +76,8 @@
       "Read(~/.docker/config.json)",
       "Read(~/.config/gh/hosts.yml)",
       "Read(~/.zsh_history)",
-      "Read(~/.bash_history)"
+      "Read(~/.bash_history)",
+      "Read(~/Library/**)"
     ],
     "ask": [
       "Bash(git push:*)",
