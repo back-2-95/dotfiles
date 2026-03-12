@@ -155,12 +155,6 @@ create_symlinks() {
     return 1
   }
 
-  step "Configure p10k"
-  p10k configure || {
-    error "Failed to configure p10k"
-    return 1
-  }
-
   step "Symlink .ssh.config to $HOME/.ssh/config"
   ln -sfn $DOTFILES_FOLDER/.ssh.config $HOME/.ssh/config || {
     error "Failed to create symlink for .ssh.config"
