@@ -63,7 +63,20 @@
       "Read(./.env.local)",
       "Read(./.env.local.*)",
       "Read(./.env.*.local)",
-      "Read(./secrets/**)"
+      "Read(./secrets/**)",
+      "Read(~/.ssh/id_*)",
+      "Read(~/.gnupg/**)",
+      "Read(~/.netrc)",
+      "Read(~/.aws/credentials)",
+      "Read(~/.config/gcloud/**)",
+      "Read(~/.kube/config)",
+      "Read(~/.config/op/**)",
+      "Read(~/.npmrc)",
+      "Read(~/.composer/auth.json)",
+      "Read(~/.docker/config.json)",
+      "Read(~/.config/gh/hosts.yml)",
+      "Read(~/.zsh_history)",
+      "Read(~/.bash_history)"
     ],
     "ask": [
       "Bash(git push:*)",
