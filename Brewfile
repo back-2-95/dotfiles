@@ -22,7 +22,9 @@
 # =============================================================================
 
 tap 'amazeeio/lagoon-cli'           # Lagoon CLI repository
+tap 'dopplerhq/cli'                 # Doppler CLI repository
 tap 'shivammathur/php'              # PHP version manager repository
+tap 'upcloudltd/tap'                # UpCloud CLI repository
 
 # =============================================================================
 # Command Line Tools - General utilities and CLI tools
@@ -61,7 +63,11 @@ brew 'mkcert'                       # Tool for making locally-trusted certificat
 brew 'amazeeio/lagoon-cli/lagoon'   # CLI for interacting with Lagoon API
 brew 'ansible'                      # IT automation platform
 brew 'doctl'                        # Command-line tool for DigitalOcean
+brew 'dopplerhq/cli/doppler'        # Secrets management CLI
 brew 'opentofu'                     # Infrastructure as code tool (Terraform fork)
+brew 'skopeo'                       # Container image inspection and copying tool
+brew 'symfony-cli'                  # Symfony PHP framework CLI
+brew 'upcloudltd/tap/upcloud-cli'   # UpCloud cloud provider CLI
 #brew 'aquasecurity/trivy/trivy'     # Vulnerability Scanner for containers
 
 # =============================================================================
