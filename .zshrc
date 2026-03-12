@@ -122,3 +122,6 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
 
 export PATH="/opt/homebrew/opt/mysql-client/bin:$PATH"
+
+# Added by Antigravity
+export PATH="/Users/marko.korhonen/.antigravity/antigravity/bin:$PATH"
