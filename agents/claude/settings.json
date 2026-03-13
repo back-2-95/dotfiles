@@ -60,6 +60,7 @@
     ],
     "deny": [
       "Bash(tofu:*)",
+      "Read(**/*.sql)",
       "Read(./.env.local)",
       "Read(./.env.local.*)",
       "Read(./.env.*.local)",
