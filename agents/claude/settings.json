@@ -56,7 +56,8 @@
       "Bash(tail:*)",
       "Bash(wget:*)",
       "Bash(wc:*)",
-      "Bash(xargs:*)"
+      "Bash(xargs:*)",
+      "Bash(pinchtab:*)"
     ],
     "deny": [
       "Bash(tofu:*)",
