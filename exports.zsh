@@ -10,7 +10,6 @@ export GOPATH
 export GOROOT
 export PROJECTS_FOLDER
 export HTTPIE_CONFIG_DIR
-export NVM_DIR
 export LS_COLORS
 
 # Set PATH with exported variables

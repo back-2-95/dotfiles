@@ -49,8 +49,8 @@ brew 'shivammathur/php/php@8.5'     # PHP 8.5 interpreter
 brew 'composer'                     # Dependency manager for PHP
 
 # JavaScript/Node.js
-brew 'nvm'                          # Node Version Manager
-brew 'yarn'                         # JavaScript package manager
+brew 'node'                         # Node
+brew 'volta'                        # Node Version Manager
 
 # Development Utilities
 brew 'gh'                           # GitHub CLI tool

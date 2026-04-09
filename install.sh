@@ -18,7 +18,6 @@
 #   - Sets up Oh My Zsh with Powerlevel10k theme
 #   - Clones and configures dotfiles repository
 #   - Creates necessary symlinks for configuration files
-#   - Installs Node.js using nvm
 #   - Creates projects folder
 #
 # -------------------------------------------------------
@@ -181,31 +180,6 @@ create_symlinks() {
   return 0
 }
 
-# Install Node.js using nvm
-install_node() {
-  step "Install latest LTS node"
-  if [ -x "$(command -v nvm)" ]; then
-    nvm install --lts || {
-      error "Failed to install Node.js LTS version"
-      return 1
-    }
-  else
-    # Source nvm to make it available
-    [ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"
-
-    if [ -x "$(command -v nvm)" ]; then
-      nvm install --lts || {
-        error "Failed to install Node.js LTS version"
-        return 1
-      }
-    else
-      error "nvm is not available. Make sure it's installed via Homebrew."
-      return 1
-    }
-  fi
-  return 0
-}
-
 # Create projects folder
 create_projects_folder() {
   step "Create projects folder $PROJECTS_FOLDER ..."
@@ -249,7 +223,6 @@ main() {
   load_env || exit 1
   install_dependencies || exit 1
   create_symlinks || exit 1
-  install_node || exit 1
   create_projects_folder || exit 1
   set_macos_preferences || exit 1
 
