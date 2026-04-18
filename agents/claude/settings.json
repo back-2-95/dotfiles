@@ -1,4 +1,8 @@
 {
+  "attribution": {
+    "commits": false,
+    "pullRequests": false
+  },
   "permissions": {
     "allow": [
       "Read",
