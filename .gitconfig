@@ -5,15 +5,6 @@
 	autocrlf = input
 [init]
 	defaultBranch = main
-[credential "https://github.com"]
-	helper =
-	helper = !/opt/homebrew/bin/gh auth git-credential
-[credential "https://gist.github.com"]
-	helper =
-	helper = !/opt/homebrew/bin/gh auth git-credential
 [credential "https://dev.azure.com"]
 	helper = /usr/local/bin/git-credential-manager
 	useHttpPath = true
-[credential]
-	helper =
-	helper = /usr/local/bin/git-credential-manager
