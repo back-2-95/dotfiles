@@ -49,10 +49,10 @@ brew 'composer'                     # Dependency manager for PHP
 
 # JavaScript/Node.js
 brew 'node'                         # Node
-brew 'volta'                        # Node Version Manager
+# brew 'volta'                        # Node Version Manager
 
 # Development Utilities
-brew 'gh'                           # GitHub CLI tool
+# brew 'gh'                           # GitHub CLI tool
 brew 'mkcert'                       # Tool for making locally-trusted certificates
 
 # =============================================================================
@@ -60,7 +60,7 @@ brew 'mkcert'                       # Tool for making locally-trusted certificat
 # =============================================================================
 
 brew 'amazeeio/lagoon-cli/lagoon'   # CLI for interacting with Lagoon API
-brew 'ansible'                      # IT automation platform
+# brew 'ansible'                      # IT automation platform
 brew 'doctl'                        # Command-line tool for DigitalOcean
 brew 'dopplerhq/cli/doppler'        # Secrets management CLI
 brew 'opentofu'                     # Infrastructure as code tool (Terraform fork)
@@ -103,7 +103,7 @@ cask 'telegram'                     # Messaging app
 # =============================================================================
 
 cask '1password'                    # Password manager (required for SSH agent)
-cask '1password-cli'                # Command-line interface for 1Password
+# cask '1password-cli'                # Command-line interface for 1Password
 cask 'git-credential-manager'      # Git Credential Manager (Azure DevOps, etc.)
 cask 'dtop'                         # System monitor
 cask 'keepingyouawake'              # Prevents Mac from sleeping
