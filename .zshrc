@@ -119,11 +119,16 @@ export PATH="/usr/local/sbin:$PATH"
 export PATH="/opt/homebrew/bin:$PATH"
 
 # Volta AFTER Homebrew — so Volta wins when in a pinned project
-export VOLTA_HOME="$HOME/.volta"
-export PATH="$VOLTA_HOME/bin:$PATH"
-export VOLTA_FEATURE_PNPM=1
+# export VOLTA_HOME="$HOME/.volta"
+# export PATH="$VOLTA_HOME/bin:$PATH"
+# export VOLTA_FEATURE_PNPM=1
 
 export PATH="/opt/homebrew/opt/mysql-client/bin:$PATH"
 
 # Added by Antigravity
-export PATH="$HOME/.antigravity/antigravity/bin:$PATH"
+# export PATH="$HOME/.antigravity/antigravity/bin:$PATH"
+
+export PATH="$HOME/.devcontainers/bin:$PATH"
+
+# mise shims — resolves node/pnpm per-project mise.toml, works for GUI apps too
+export PATH="$HOME/.local/share/mise/shims:$PATH"
