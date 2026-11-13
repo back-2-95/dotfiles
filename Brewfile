@@ -47,10 +47,6 @@ brew 'shivammathur/php/php@8.4'     # PHP 8.4 interpreter
 brew 'shivammathur/php/php@8.5'     # PHP 8.5 interpreter
 brew 'composer'                     # Dependency manager for PHP
 
-# JavaScript/Node.js
-brew 'node'                         # Node
-# brew 'volta'                        # Node Version Manager
-
 # Development Utilities
 # brew 'gh'                           # GitHub CLI tool
 brew 'mkcert'                       # Tool for making locally-trusted certificates
@@ -109,7 +105,6 @@ cask 'dtop'                         # System monitor
 cask 'keepingyouawake'              # Prevents Mac from sleeping
 cask 'orbstack'                     # Docker and Linux container manager
 #cask 'istat-menus'                  # System monitoring tool
-#cask 'tunnelblick'                  # OpenVPN client
 #brew 'mackup'                       # Keep application settings in sync
 #brew 'nss'                          # Network Security Services libraries
 
