@@ -118,11 +118,6 @@ export PATH="/usr/local/sbin:$PATH"
 # System default node (used by GUI apps and non-shell processes)
 export PATH="/opt/homebrew/bin:$PATH"
 
-# Volta AFTER Homebrew — so Volta wins when in a pinned project
-# export VOLTA_HOME="$HOME/.volta"
-# export PATH="$VOLTA_HOME/bin:$PATH"
-# export VOLTA_FEATURE_PNPM=1
-
 export PATH="/opt/homebrew/opt/mysql-client/bin:$PATH"
 
 # Added by Antigravity
