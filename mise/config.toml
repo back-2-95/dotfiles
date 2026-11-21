@@ -62,8 +62,10 @@ yq = "latest"
 [bootstrap.hooks.post-packages]
 description = "Install PHP versions with Homebrew (Brewfile.php)"
 run = """
-/opt/homebrew/bin/brew tap shivammathur/php
-if /opt/homebrew/bin/brew trust --help >/dev/null 2>&1; then /opt/homebrew/bin/brew trust shivammathur/php; fi
+for tap in shivammathur/php shivammathur/extensions; do
+  /opt/homebrew/bin/brew tap "$tap"
+  if /opt/homebrew/bin/brew trust --help >/dev/null 2>&1; then /opt/homebrew/bin/brew trust "$tap"; fi
+done
 /opt/homebrew/bin/brew bundle --file ~/dotfiles/Brewfile.php
 """
 
