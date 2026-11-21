@@ -167,6 +167,16 @@ install_dependencies() {
     BREWFILE=$(mktemp)
     grep -v "^cask " "$DOTFILES_FOLDER/Brewfile" > "$BREWFILE"
   fi
+  # Newer Homebrew refuses formulae from third-party taps until they are trusted
+  if brew trust --help >/dev/null 2>&1; then
+    for tap in $(sed -n "s/^tap '\([^']*\)'.*/\1/p" "$DOTFILES_FOLDER/Brewfile"); do
+      step "Trusting tap $tap ..."
+      brew tap "$tap" && brew trust "$tap" || {
+        error "Failed to trust tap $tap"
+        return 1
+      }
+    done
+  fi
   brew bundle --file="$BREWFILE" || {
     error "Failed to install dependencies with Homebrew Bundle"
     return 1
