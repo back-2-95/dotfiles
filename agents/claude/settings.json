@@ -85,20 +85,6 @@
       "Read(~/.zsh_history)",
       "Read(~/.bash_history)",
       "Read(~/Library/**)"
-    ],
-    "ask": [
-      "Bash(git push:*)",
-      "Bash(git checkout:*)",
-      "Bash(git commit:*)",
-      "Bash(git reset:*)",
-      "Bash(git merge:*)",
-      "Bash(git rebase:*)",
-      "Bash(docker rm:*)",
-      "Bash(docker rmi:*)",
-      "Bash(docker system prune:*)",
-      "Bash(docker compose restart:*)",
-      "Bash(rm:*)",
-      "Bash(gh:*)"
     ]
   }
 }

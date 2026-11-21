@@ -1,296 +1,134 @@
 #!/bin/sh
 #
 # -------------------------------------------------------
-# Dotfiles Installation Script
+# Dotfiles Installation Script (mise bootstrap)
 # -------------------------------------------------------
 #
-# Description:
-#   This script sets up a macOS development environment by installing
-#   and configuring various tools and dotfiles. It handles the installation
-#   of Homebrew, Oh My Zsh, Powerlevel10k theme, and creates necessary
-#   symlinks for configuration files.
+# Sets up a Mac from this repository. Everything declarative lives in
+# mise/config.toml ([bootstrap.*], [dotfiles], [tools]); this script only
+# does what mise cannot do for itself:
+#
+#   1. Xcode Command Line Tools (git)
+#   2. Homebrew (only used for PHP, see Brewfile.php)
+#   3. mise
+#   4. Clone this repo to ~/dotfiles and link ~/.config/mise -> ~/dotfiles/mise
+#   5. mise bootstrap
 #
 # Usage:
-#   ./install.sh
+#   sh -c "$(curl -fsSL https://raw.githubusercontent.com/back-2-95/dotfiles/main/install.sh)"
 #
-# Features:
-#   - Installs Homebrew and required packages
-#   - Sets up Oh My Zsh with Powerlevel10k theme
-#   - Clones and configures dotfiles repository
-#   - Creates necessary symlinks for configuration files
-#   - Creates projects folder
+# Environment:
+#   DOTFILES_BRANCH=<branch>   Branch to clone (default: main)
+#   DOTFILES_SKIP_CASKS=1      Install formulae only, skip GUI apps (CI)
+#   DOTFILES_FORCE=1           Replace existing files that conflict with [dotfiles]
+#   DOTFILES_DRY_RUN=1         Only preview what mise bootstrap would do
 #
 # -------------------------------------------------------
 
-# Configuration (overridable via environment, e.g. in CI or a test VM)
-DOTFILES_FOLDER=${DOTFILES_FOLDER:-$HOME/dotfiles}
+set -e
+
+DOTFILES_FOLDER=$HOME/dotfiles # .zshrc and mise/config.toml expect this path
 DOTFILES_URL=${DOTFILES_URL:-https://github.com/back-2-95/dotfiles.git}
 DOTFILES_BRANCH=${DOTFILES_BRANCH:-main}
-# Set DOTFILES_SKIP_CASKS=1 to install only formulae (GUI apps skipped; used in CI)
-DOTFILES_SKIP_CASKS=${DOTFILES_SKIP_CASKS:-0}
-DEFAULT_PROJECTS_FOLDER=$HOME/Projects
+MISE=$HOME/.local/bin/mise
 
-# Colors
 NO_COLOR="\033[0m"
-GREEN="\033[0;32m"
 RED="\033[0;31m"
 YELLOW="\033[0;33m"
 CYAN="\033[0;36m"
+GREEN="\033[0;32m"
 
-# Print a step message
-step() {
-  printf "${YELLOW}[dotfiles]${CYAN} $1${NO_COLOR}\n"
-}
+step() { printf "${YELLOW}[dotfiles]${CYAN} %s${NO_COLOR}\n" "$1"; }
+error() { printf "${RED}[error]${NO_COLOR} %s\n" "$1"; exit 1; }
 
-# Print an error message
-error() {
-  printf "${RED}[error]${NO_COLOR} $1\n"
-}
-
-# Print a success message
-success() {
-  printf "${GREEN}[success]${NO_COLOR} $1\n"
-}
-
-# Install Homebrew if not already installed
-install_homebrew() {
-  step "Installing Homebrew & Xcode Command Line Tools ..."
-  if [ -x "$(which brew)" ]; then
-    printf "Homebrew is already installed\n"
-
-    # Update Homebrew recipes
-    step "Updating Homebrew ..."
-    brew update || {
-      error "Failed to update Homebrew"
-      return 1
-    }
-  else
-    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)" || {
-      error "Failed to install Homebrew"
-      return 1
-    }
+# git on a fresh Mac is a stub that opens a GUI prompt, so install the
+# Command Line Tools headlessly first (the same trick Homebrew's installer uses).
+install_clt() {
+  if xcode-select -p >/dev/null 2>&1; then
+    return 0
   fi
-  # A fresh install does not put brew on PATH for this shell
-  if [ -x /opt/homebrew/bin/brew ]; then
-    eval "$(/opt/homebrew/bin/brew shellenv)"
+  step "Installing Xcode Command Line Tools ..."
+  placeholder=/tmp/.com.apple.dt.CommandLineTools.installondemand.in-progress
+  touch "$placeholder"
+  label=$(softwareupdate -l 2>/dev/null |
+    sed -n 's/^[[:space:]]*\* Label: \(Command Line Tools.*\)$/\1/p' | sort -V | tail -n1)
+  rm -f "$placeholder"
+  if [ -n "$label" ]; then
+    sudo softwareupdate -i "$label" --verbose
   fi
-  return 0
-}
-
-# Install mise (official installer script, places binary in $HOME/.local/bin)
-install_mise() {
-  step "Installing mise ..."
-  if [ -x "$HOME/.local/bin/mise" ]; then
-    printf "mise is already installed\n"
-  else
-    curl -fsSL https://mise.run | sh || {
-      error "Failed to install mise"
-      return 1
-    }
-  fi
-  return 0
-}
-
-# Install global (personal) mise tools from mise/config.toml
-install_mise_tools() {
-  step "Installing mise tools ..."
-  "$HOME/.local/bin/mise" install || {
-    error "Failed to install mise tools"
-    return 1
+  xcode-select -p >/dev/null 2>&1 || {
+    xcode-select --install
+    error "Finish the Command Line Tools installer, then run this script again"
   }
-  return 0
 }
 
-# Install Oh My Zsh if not already installed
-install_oh_my_zsh() {
-  step "Installing Oh My Zsh ..."
-  if [ -d "$HOME/.oh-my-zsh" ]; then
-    printf "Oh My Zsh is already installed\n"
+install_homebrew() {
+  if [ -x /opt/homebrew/bin/brew ]; then
+    step "Homebrew is already installed"
   else
-    sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended || {
-      error "Failed to install Oh My Zsh"
-      return 1
-    }
+    step "Installing Homebrew ..."
+    NONINTERACTIVE=1 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
   fi
-  return 0
 }
 
-# Clone dotfiles repository if not already cloned
-install_dotfiles() {
-  step "Installing dotfiles ..."
+install_mise() {
+  if [ -x "$MISE" ]; then
+    step "mise is already installed, updating ..."
+    "$MISE" self-update --yes || true
+  else
+    step "Installing mise ..."
+    curl -fsSL https://mise.run | sh
+  fi
+}
+
+clone_dotfiles() {
   if [ -d "$DOTFILES_FOLDER" ]; then
-    printf "$DOTFILES_FOLDER already exists\n"
+    step "$DOTFILES_FOLDER already exists"
   else
-    step "Clone the repository to $DOTFILES_FOLDER ..."
-    git clone -b $DOTFILES_BRANCH $DOTFILES_URL $DOTFILES_FOLDER || {
-      error "Failed to clone dotfiles repository"
-      return 1
-    }
+    step "Cloning $DOTFILES_URL ($DOTFILES_BRANCH) to $DOTFILES_FOLDER ..."
+    git clone -b "$DOTFILES_BRANCH" "$DOTFILES_URL" "$DOTFILES_FOLDER"
   fi
-  return 0
 }
 
-# Install Powerlevel10k if not already installed
-install_powerlevel10k() {
-  step "Installing Powerlevel10k ..."
-  if [ -d "$DOTFILES_FOLDER/themes/powerlevel10k" ]; then
-    printf "Powerlevel10k is already installed\n"
-  else
-    git clone --depth=1 https://github.com/romkatv/powerlevel10k.git "$DOTFILES_FOLDER"/themes/powerlevel10k || {
-      error "Failed to install Powerlevel10k"
-      return 1
-    }
+# mise reads its global config from ~/.config/mise without a trust prompt
+link_mise_config() {
+  target=$DOTFILES_FOLDER/mise
+  config=$HOME/.config/mise
+  if [ "$(readlink "$config" 2>/dev/null)" = "$target" ]; then
+    return 0
   fi
-  return 0
+  step "Linking $config -> $target ..."
+  mkdir -p "$HOME/.config"
+  if [ -d "$config" ] && [ ! -L "$config" ]; then
+    # Older installs linked only config.toml; keep anything else as a backup
+    backup="$config.bak.$(date +%Y%m%d%H%M%S)"
+    step "Moving existing $config to $backup"
+    mv "$config" "$backup"
+  fi
+  ln -sfn "$target" "$config"
 }
 
-# Load environment variables
-load_env() {
-  # Check if .env file exists
-  if [ -f "$DOTFILES_FOLDER/.env" ]; then
-    step "Loading environment variables from .env ..."
-    source "$DOTFILES_FOLDER/.env"
-  else
-    step "No .env file found, using default values ..."
-    # Set default values for environment variables
-    PROJECTS_FOLDER=$DEFAULT_PROJECTS_FOLDER
-  fi
-  return 0
-}
-
-# Install dependencies using Homebrew Bundle
-install_dependencies() {
-  step "Installing Homebrew Bundle ..."
-  BREWFILE="$DOTFILES_FOLDER/Brewfile"
+run_bootstrap() {
+  set -- --yes
+  [ "$DOTFILES_FORCE" = "1" ] && set -- "$@" --force-dotfiles
+  [ "$DOTFILES_DRY_RUN" = "1" ] && set -- "$@" --dry-run
   if [ "$DOTFILES_SKIP_CASKS" = "1" ]; then
     step "DOTFILES_SKIP_CASKS=1, skipping casks ..."
-    BREWFILE=$(mktemp)
-    grep -v "^cask " "$DOTFILES_FOLDER/Brewfile" > "$BREWFILE"
+    export MISE_SYSTEM_PACKAGES_MANAGERS=brew
   fi
-  # Newer Homebrew refuses formulae from third-party taps until they are trusted
-  if brew trust --help >/dev/null 2>&1; then
-    for tap in $(sed -n "s/^tap '\([^']*\)'.*/\1/p" "$DOTFILES_FOLDER/Brewfile"); do
-      step "Trusting tap $tap ..."
-      brew tap "$tap" && brew trust "$tap" || {
-        error "Failed to trust tap $tap"
-        return 1
-      }
-    done
-  fi
-  brew bundle --file="$BREWFILE" || {
-    error "Failed to install dependencies with Homebrew Bundle"
-    return 1
-  }
-  return 0
+  step "Running mise bootstrap $* ..."
+  "$MISE" bootstrap "$@"
 }
 
-# Create symlinks for configuration files
-create_symlinks() {
-  step "Creating symlinks for configuration files ..."
-
-  step "Symlink .zshrc to $HOME/.zshrc"
-  ln -sfn $DOTFILES_FOLDER/.zshrc $HOME/.zshrc || {
-    error "Failed to create symlink for .zshrc"
-    return 1
-  }
-
-  step "Symlink .p10k.zsh to $HOME/.p10k.zsh"
-  ln -sfn $DOTFILES_FOLDER/.p10k.zsh $HOME/.p10k.zsh || {
-    error "Failed to create symlink for .p10k.zsh"
-    return 1
-  }
-
-  step "Symlink .ssh.config to $HOME/.ssh/config"
-  mkdir -p $HOME/.ssh && chmod 700 $HOME/.ssh
-  ln -sfn $DOTFILES_FOLDER/.ssh.config $HOME/.ssh/config || {
-    error "Failed to create symlink for .ssh.config"
-    return 1
-  }
-
-  step "Symlink .gitconfig to $HOME/.gitconfig"
-  ln -sfn $DOTFILES_FOLDER/.gitconfig $HOME/.gitconfig || {
-    error "Failed to create symlink for .gitconfig"
-    return 1
-  }
-
-  step "Symlink agents/claude/settings.json to $HOME/.claude/settings.json"
-  mkdir -p $HOME/.claude
-  ln -sfn $DOTFILES_FOLDER/agents/claude/settings.json $HOME/.claude/settings.json || {
-    error "Failed to create symlink for .claude/settings.json"
-    return 1
-  }
-
-  step "Symlink mise/config.toml to $HOME/.config/mise/config.toml"
-  mkdir -p $HOME/.config/mise
-  ln -sfn $DOTFILES_FOLDER/mise/config.toml $HOME/.config/mise/config.toml || {
-    error "Failed to create symlink for mise config"
-    return 1
-  }
-
-  step "Symlink dtop/config.yaml to $HOME/.config/dtop/config.yaml"
-  mkdir -p $HOME/.config/dtop
-  ln -sfn $DOTFILES_FOLDER/dtop/config.yaml $HOME/.config/dtop/config.yaml || {
-    error "Failed to create symlink for dtop config"
-    return 1
-  }
-
-  # Symlink the Mackup config file to the home directory
-  #step "Symlink .mackup.cfg to $HOME/.mackup.cfg"
-  #ln -sfn $DOTFILES_FOLDER/.mackup.cfg $HOME/.mackup.cfg
-
-  return 0
-}
-
-# Create projects folder
-create_projects_folder() {
-  step "Create projects folder $PROJECTS_FOLDER ..."
-  if [ -d "$PROJECTS_FOLDER" ]; then
-    printf "$PROJECTS_FOLDER already exists\n"
-  else
-    mkdir -p $PROJECTS_FOLDER && printf "$PROJECTS_FOLDER created\n" || {
-      error "Failed to create projects folder"
-      return 1
-    }
-  fi
-  return 0
-}
-
-# Set macOS preferences
-set_macos_preferences() {
-  # Set macOS preferences
-  # We will run this last because this will reload the shell
-  # Comment out until checked with Big Sur
-  #step "Set macOS preferences ..."
-  #source .macos
-  return 0
-}
-
-# Main function to run the installation process
 main() {
-  step "Setting up your Mac\n"
-
-  # Install components
-  install_homebrew || exit 1
-  install_mise || exit 1
-  install_oh_my_zsh || exit 1
-  install_dotfiles || exit 1
-
-  # Move to repo folder
-  cd "$DOTFILES_FOLDER" || {
-    error "Failed to change directory to $DOTFILES_FOLDER"
-    exit 1
-  }
-
-  install_powerlevel10k || exit 1
-  load_env || exit 1
-  install_dependencies || exit 1
-  create_symlinks || exit 1
-  install_mise_tools || exit 1
-  create_projects_folder || exit 1
-  set_macos_preferences || exit 1
-
-  success "Installation completed successfully!"
+  step "Setting up your Mac"
+  install_clt
+  install_homebrew
+  install_mise
+  clone_dotfiles
+  link_mise_config
+  run_bootstrap
+  printf "${GREEN}[success]${NO_COLOR} Installation completed! Open a new terminal.\n"
 }
 
-# Run the main function
 main

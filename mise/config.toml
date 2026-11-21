@@ -1,4 +1,4 @@
-# Global (personal) mise tools — symlinked to ~/.config/mise/config.toml by install.sh.
+# Global (personal) mise config — ~/.config/mise is a symlink to this directory (see install.sh).
 # Project mise.toml files (e.g. ~/Druid/magic, employer preference) override these per tool.
 
 [tools]
@@ -9,7 +9,107 @@ gh = "latest"
 jq = "latest"
 node = "24"
 "pipx:homeassistant-cli" = "latest"
+"github:UpCloudLtd/upcloud-cli" = "latest" # upctl
+"github:composer/composer" = { version = "latest", asset_pattern = "composer.phar", bin = "composer" }
 pnpm = "12"
 python = ["3", "2"] # python/python3 = 3.x (used by uv/pipx tools); python2 stays available
 uv = "latest"
 yq = "latest"
+
+# =============================================================================
+# Machine setup — applied by `mise bootstrap` (see install.sh). Replaces the Brewfile.
+# Preview: mise bootstrap --dry-run   Check: mise bootstrap status --missing
+# =============================================================================
+
+# Packages: mise installs Homebrew bottles itself, Homebrew is not needed.
+[bootstrap.packages]
+# Command line tools
+"brew:eza" = "latest"                       # Modern ls
+"brew:git" = "latest"
+"brew:gpatch" = "latest"                    # GNU patch
+"brew:httpie" = "latest"                    # HTTP client
+"brew:openssh" = "latest"
+# Development (PHP comes from real Homebrew, see Brewfile.php and the hook below)
+"brew:mkcert" = "latest"                    # Locally-trusted certificates
+# DevOps
+"brew:skopeo" = "latest"                    # Container image tool
+"brew:symfony-cli" = "latest"
+# Productivity
+"brew-cask:iterm2" = "latest"
+"brew-cask:phpstorm" = "latest"
+"brew-cask:beekeeper-studio" = "latest"
+"brew-cask:bruno" = "latest"
+"brew-cask:obsidian" = "latest"
+"brew-cask:raycast" = "latest"
+"brew-cask:rectangle" = "latest"
+"brew-cask:transmit" = "latest"
+# Browsers
+"brew-cask:brave-browser" = "latest"
+"brew-cask:firefox" = "latest"
+"brew-cask:google-chrome" = "latest"
+# Communication
+"brew-cask:slack" = "latest"
+"brew-cask:telegram" = "latest"
+# Utilities
+"brew-cask:1password" = { adopt = true }    # Keep an existing install (and its macOS permissions)
+"brew-cask:git-credential-manager" = "latest"
+"brew-cask:keepingyouawake" = "latest"
+"brew-cask:orbstack" = "latest"
+# Media
+"brew-cask:spotify" = "latest"
+
+# PHP: mise's brew manager builds third-party taps from source (fails for
+# shivammathur/php) and can't leave a version unlinked, so Homebrew handles PHP.
+[bootstrap.hooks.post-packages]
+description = "Install PHP versions with Homebrew (Brewfile.php)"
+run = """
+for tap in shivammathur/php shivammathur/extensions; do
+  /opt/homebrew/bin/brew tap "$tap"
+  if /opt/homebrew/bin/brew trust --help >/dev/null 2>&1; then /opt/homebrew/bin/brew trust "$tap"; fi
+done
+/opt/homebrew/bin/brew bundle --file ~/dotfiles/Brewfile.php
+"""
+
+# Git checkouts (replaces the Oh My Zsh installer and the Powerlevel10k clone)
+[bootstrap.repos]
+"~/.oh-my-zsh" = { url = "https://github.com/ohmyzsh/ohmyzsh.git", depth = 1 }
+"~/dotfiles/themes/powerlevel10k" = { url = "https://github.com/romkatv/powerlevel10k.git", depth = 1 }
+
+# Dotfiles (~/.config/mise itself is linked by install.sh)
+[dotfiles]
+# Symlinked into place
+"~/.zshrc" = "~/dotfiles/.zshrc"
+"~/.p10k.zsh" = "~/dotfiles/.p10k.zsh"
+"~/.gitconfig" = "~/dotfiles/.gitconfig"
+"~/.config/dtop/config.yaml" = "~/dotfiles/dtop/config.yaml"
+# Files that other tools also write to, so only part of them is managed:
+# ~/.ssh/config stays a regular file (Upsun CLI, OrbStack etc. add their blocks);
+# it just includes the repo's config first.
+"~/.ssh/config/dotfiles" = { line = "Include ~/dotfiles/.ssh.config", position = "prepend" }
+# Claude Code rewrites settings.json; own only the keys in the repo file
+# (permissions, attribution) and leave plugins, hooks, theme etc. to Claude.
+"~/.claude/settings.json/dotfiles" = { source = "~/dotfiles/agents/claude/settings.json", merge = true }
+
+[bootstrap.directories."~/.ssh"]
+mode = "0700"
+
+[bootstrap.directories."~/Druid"]  # PROJECTS_FOLDER in .env
+
+# `mise run versions` from anywhere: versions of the main software
+[tasks.versions]
+description = "Print versions of the main software installed by the dotfiles"
+run = "~/dotfiles/scripts/versions.sh"
+quiet = true
+
+[tasks.php]
+description = "Switch the PHP version linked as `php` (mise php 8.4)"
+usage = 'arg "<version>" help="PHP version" { choices "8.4" "8.5" "8.6" }'
+quiet = true
+run = '''
+echo "🐘 Switch PHP version to ${usage_version}..."
+for v in 8.4 8.5 8.6; do
+  [ "$v" = "$usage_version" ] || /opt/homebrew/bin/brew unlink --quiet "shivammathur/php/php@$v" >/dev/null 2>&1 || true
+done
+/opt/homebrew/bin/brew link "shivammathur/php/php@${usage_version}" --force --overwrite --quiet >/dev/null 2>&1
+/opt/homebrew/bin/php -v | head -1
+'''
