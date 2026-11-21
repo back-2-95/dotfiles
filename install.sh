@@ -22,10 +22,12 @@
 #
 # -------------------------------------------------------
 
-# Configuration
-DOTFILES_FOLDER=$HOME/dotfiles
-DOTFILES_URL=https://github.com/back-2-95/dotfiles.git
-DOTFILES_BRANCH=master
+# Configuration (overridable via environment, e.g. in CI or a test VM)
+DOTFILES_FOLDER=${DOTFILES_FOLDER:-$HOME/dotfiles}
+DOTFILES_URL=${DOTFILES_URL:-https://github.com/back-2-95/dotfiles.git}
+DOTFILES_BRANCH=${DOTFILES_BRANCH:-main}
+# Set DOTFILES_SKIP_CASKS=1 to install only formulae (GUI apps skipped; used in CI)
+DOTFILES_SKIP_CASKS=${DOTFILES_SKIP_CASKS:-0}
 DEFAULT_PROJECTS_FOLDER=$HOME/Projects
 
 # Colors
@@ -67,6 +69,10 @@ install_homebrew() {
       error "Failed to install Homebrew"
       return 1
     }
+  fi
+  # A fresh install does not put brew on PATH for this shell
+  if [ -x /opt/homebrew/bin/brew ]; then
+    eval "$(/opt/homebrew/bin/brew shellenv)"
   fi
   return 0
 }
@@ -155,7 +161,13 @@ load_env() {
 # Install dependencies using Homebrew Bundle
 install_dependencies() {
   step "Installing Homebrew Bundle ..."
-  brew bundle || {
+  BREWFILE="$DOTFILES_FOLDER/Brewfile"
+  if [ "$DOTFILES_SKIP_CASKS" = "1" ]; then
+    step "DOTFILES_SKIP_CASKS=1, skipping casks ..."
+    BREWFILE=$(mktemp)
+    grep -v "^cask " "$DOTFILES_FOLDER/Brewfile" > "$BREWFILE"
+  fi
+  brew bundle --file="$BREWFILE" || {
     error "Failed to install dependencies with Homebrew Bundle"
     return 1
   }
@@ -179,6 +191,7 @@ create_symlinks() {
   }
 
   step "Symlink .ssh.config to $HOME/.ssh/config"
+  mkdir -p $HOME/.ssh && chmod 700 $HOME/.ssh
   ln -sfn $DOTFILES_FOLDER/.ssh.config $HOME/.ssh/config || {
     error "Failed to create symlink for .ssh.config"
     return 1
