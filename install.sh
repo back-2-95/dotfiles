@@ -71,6 +71,30 @@ install_homebrew() {
   return 0
 }
 
+# Install mise (official installer script, places binary in $HOME/.local/bin)
+install_mise() {
+  step "Installing mise ..."
+  if [ -x "$HOME/.local/bin/mise" ]; then
+    printf "mise is already installed\n"
+  else
+    curl -fsSL https://mise.run | sh || {
+      error "Failed to install mise"
+      return 1
+    }
+  fi
+  return 0
+}
+
+# Install global (personal) mise tools from mise/config.toml
+install_mise_tools() {
+  step "Installing mise tools ..."
+  "$HOME/.local/bin/mise" install || {
+    error "Failed to install mise tools"
+    return 1
+  }
+  return 0
+}
+
 # Install Oh My Zsh if not already installed
 install_oh_my_zsh() {
   step "Installing Oh My Zsh ..."
@@ -173,6 +197,20 @@ create_symlinks() {
     return 1
   }
 
+  step "Symlink mise/config.toml to $HOME/.config/mise/config.toml"
+  mkdir -p $HOME/.config/mise
+  ln -sfn $DOTFILES_FOLDER/mise/config.toml $HOME/.config/mise/config.toml || {
+    error "Failed to create symlink for mise config"
+    return 1
+  }
+
+  step "Symlink dtop/config.yaml to $HOME/.config/dtop/config.yaml"
+  mkdir -p $HOME/.config/dtop
+  ln -sfn $DOTFILES_FOLDER/dtop/config.yaml $HOME/.config/dtop/config.yaml || {
+    error "Failed to create symlink for dtop config"
+    return 1
+  }
+
   # Symlink the Mackup config file to the home directory
   #step "Symlink .mackup.cfg to $HOME/.mackup.cfg"
   #ln -sfn $DOTFILES_FOLDER/.mackup.cfg $HOME/.mackup.cfg
@@ -210,6 +248,7 @@ main() {
 
   # Install components
   install_homebrew || exit 1
+  install_mise || exit 1
   install_oh_my_zsh || exit 1
   install_dotfiles || exit 1
 
@@ -223,6 +262,7 @@ main() {
   load_env || exit 1
   install_dependencies || exit 1
   create_symlinks || exit 1
+  install_mise_tools || exit 1
   create_projects_folder || exit 1
   set_macos_preferences || exit 1
 

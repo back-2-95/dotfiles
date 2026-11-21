@@ -1,0 +1,14 @@
+# Global (personal) mise tools — symlinked to ~/.config/mise/config.toml by install.sh.
+# Project mise.toml files (e.g. ~/Druid/magic, employer preference) override these per tool.
+
+[tools]
+1password-cli = "latest"
+ansible = { version = "15", pipx_args = "--include-deps", uvx = false }
+gh = "latest"
+"github:amir20/dtop" = "latest"
+jq = "latest"
+node = "24"
+"pipx:homeassistant-cli" = "latest"
+pnpm = "12"
+python = "2"
+yq = "latest"
