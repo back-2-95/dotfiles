@@ -9,6 +9,7 @@ gh = "latest"
 jq = "latest"
 node = "24"
 "pipx:homeassistant-cli" = "latest"
+"github:UpCloudLtd/upcloud-cli" = "latest" # upctl
 pnpm = "12"
 python = ["3", "2"] # python/python3 = 3.x (used by uv/pipx tools); python2 stays available
 uv = "latest"
@@ -27,15 +28,11 @@ yq = "latest"
 "brew:gpatch" = "latest"                    # GNU patch
 "brew:httpie" = "latest"                    # HTTP client
 "brew:openssh" = "latest"
-# Development
-"brew:shivammathur/php/php@8.5" = "latest"  # Default PHP, linked as `php`
-# TODO: php@8.4 and php@8.6 (in the old Brewfile) are not installed: mise's brew
-# manager has no `link: false`, so extra versions conflict with the linked php@8.5.
+# Development (PHP comes from real Homebrew, see Brewfile.php and the hook below)
 "brew:mkcert" = "latest"                    # Locally-trusted certificates
 # DevOps
 "brew:skopeo" = "latest"                    # Container image tool
 "brew:symfony-cli" = "latest"
-"brew:upcloudltd/tap/upcloud-cli" = "latest"
 # Productivity
 "brew-cask:iterm2" = "latest"
 "brew-cask:phpstorm" = "latest"
@@ -59,6 +56,16 @@ yq = "latest"
 "brew-cask:orbstack" = "latest"
 # Media
 "brew-cask:spotify" = "latest"
+
+# PHP: mise's brew manager builds third-party taps from source (fails for
+# shivammathur/php) and can't leave a version unlinked, so Homebrew handles PHP.
+[bootstrap.hooks.post-packages]
+description = "Install PHP versions with Homebrew (Brewfile.php)"
+run = """
+/opt/homebrew/bin/brew tap shivammathur/php
+if /opt/homebrew/bin/brew trust --help >/dev/null 2>&1; then /opt/homebrew/bin/brew trust shivammathur/php; fi
+/opt/homebrew/bin/brew bundle --file ~/dotfiles/Brewfile.php
+"""
 
 # Git checkouts (replaces the Oh My Zsh installer and the Powerlevel10k clone)
 [bootstrap.repos]

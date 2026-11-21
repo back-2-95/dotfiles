@@ -9,9 +9,10 @@
 # does what mise cannot do for itself:
 #
 #   1. Xcode Command Line Tools (git)
-#   2. mise
-#   3. Clone this repo to ~/dotfiles and link ~/.config/mise -> ~/dotfiles/mise
-#   4. mise bootstrap
+#   2. Homebrew (only used for PHP, see Brewfile.php)
+#   3. mise
+#   4. Clone this repo to ~/dotfiles and link ~/.config/mise -> ~/dotfiles/mise
+#   5. mise bootstrap
 #
 # Usage:
 #   sh -c "$(curl -fsSL https://raw.githubusercontent.com/back-2-95/dotfiles/main/install.sh)"
@@ -59,6 +60,15 @@ install_clt() {
     xcode-select --install
     error "Finish the Command Line Tools installer, then run this script again"
   }
+}
+
+install_homebrew() {
+  if [ -x /opt/homebrew/bin/brew ]; then
+    step "Homebrew is already installed"
+  else
+    step "Installing Homebrew ..."
+    NONINTERACTIVE=1 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+  fi
 }
 
 install_mise() {
@@ -113,6 +123,7 @@ run_bootstrap() {
 main() {
   step "Setting up your Mac"
   install_clt
+  install_homebrew
   install_mise
   clone_dotfiles
   link_mise_config
