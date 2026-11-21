@@ -1,4 +1,4 @@
-# Global (personal) mise tools — symlinked to ~/.config/mise/config.toml by install.sh.
+# Global (personal) mise config — ~/.config/mise is a symlink to this directory (see install.sh).
 # Project mise.toml files (e.g. ~/Druid/magic, employer preference) override these per tool.
 
 [tools]
@@ -13,3 +13,71 @@ pnpm = "12"
 python = ["3", "2"] # python/python3 = 3.x (used by uv/pipx tools); python2 stays available
 uv = "latest"
 yq = "latest"
+
+# =============================================================================
+# Machine setup — applied by `mise bootstrap` (see install.sh). Replaces the Brewfile.
+# Preview: mise bootstrap --dry-run   Check: mise bootstrap status --missing
+# =============================================================================
+
+# Packages: mise installs Homebrew bottles itself, Homebrew is not needed.
+[bootstrap.packages]
+# Command line tools
+"brew:eza" = "latest"                       # Modern ls
+"brew:git" = "latest"
+"brew:gpatch" = "latest"                    # GNU patch
+"brew:httpie" = "latest"                    # HTTP client
+"brew:openssh" = "latest"
+# Development
+"brew:shivammathur/php/php@8.5" = "latest"  # Default PHP, linked as `php`
+# TODO: php@8.4 and php@8.6 (in the old Brewfile) are not installed: mise's brew
+# manager has no `link: false`, so extra versions conflict with the linked php@8.5.
+"brew:mkcert" = "latest"                    # Locally-trusted certificates
+# DevOps
+"brew:skopeo" = "latest"                    # Container image tool
+"brew:symfony-cli" = "latest"
+"brew:upcloudltd/tap/upcloud-cli" = "latest"
+# Productivity
+"brew-cask:iterm2" = "latest"
+"brew-cask:phpstorm" = "latest"
+"brew-cask:beekeeper-studio" = "latest"
+"brew-cask:bruno" = "latest"
+"brew-cask:obsidian" = "latest"
+"brew-cask:raycast" = "latest"
+"brew-cask:rectangle" = "latest"
+"brew-cask:transmit" = "latest"
+# Browsers
+"brew-cask:brave-browser" = "latest"
+"brew-cask:firefox" = "latest"
+"brew-cask:google-chrome" = "latest"
+# Communication
+"brew-cask:slack" = "latest"
+"brew-cask:telegram" = "latest"
+# Utilities
+"brew-cask:1password" = { adopt = true }    # Keep an existing install (and its macOS permissions)
+"brew-cask:git-credential-manager" = "latest"
+"brew-cask:keepingyouawake" = "latest"
+"brew-cask:orbstack" = "latest"
+# Media
+"brew-cask:spotify" = "latest"
+
+# Git checkouts (replaces the Oh My Zsh installer and the Powerlevel10k clone)
+[bootstrap.repos]
+"~/.oh-my-zsh" = { url = "https://github.com/ohmyzsh/ohmyzsh.git", depth = 1 }
+"~/dotfiles/themes/powerlevel10k" = { url = "https://github.com/romkatv/powerlevel10k.git", depth = 1 }
+
+# Dotfiles, symlinked into place (~/.config/mise itself is linked by install.sh)
+[dotfiles]
+"~/.zshrc" = "~/dotfiles/.zshrc"
+"~/.p10k.zsh" = "~/dotfiles/.p10k.zsh"
+"~/.gitconfig" = "~/dotfiles/.gitconfig"
+"~/.ssh/config" = "~/dotfiles/.ssh.config"
+"~/.claude/settings.json" = "~/dotfiles/agents/claude/settings.json"
+"~/.config/dtop/config.yaml" = "~/dotfiles/dtop/config.yaml"
+
+[bootstrap.directories."~/.ssh"]
+mode = "0700"
+
+[bootstrap.directories."~/Druid"]  # PROJECTS_FOLDER in .env
+
+[bootstrap.user]
+login_shell = "/bin/zsh"  # macOS default, kept explicit

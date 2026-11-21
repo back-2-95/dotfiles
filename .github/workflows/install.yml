@@ -18,8 +18,7 @@ jobs:
     timeout-minutes: 60
     env:
       DOTFILES_SKIP_CASKS: ${{ inputs.casks && '0' || '1' }}
-      NONINTERACTIVE: "1"
-      HOMEBREW_NO_AUTO_UPDATE: "1"
+      DOTFILES_FORCE: "1" # the runner ships its own ~/.zshrc, ~/.gitconfig etc.
       MISE_GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # avoid GitHub API rate limits for "latest" tools
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
@@ -45,12 +44,14 @@ jobs:
         run: |
           set -e
           for link in .zshrc .p10k.zsh .gitconfig .ssh/config .claude/settings.json \
-                      .config/mise/config.toml .config/dtop/config.yaml; do
+                      .config/mise .config/dtop/config.yaml; do
             test -L "$HOME/$link" || { echo "missing symlink: ~/$link"; exit 1; }
             test -e "$HOME/$link" || { echo "broken symlink: ~/$link"; exit 1; }
           done
           test -d "$HOME/dotfiles/themes/powerlevel10k"
-          ~/.local/bin/mise ls
+          test -d "$HOME/.oh-my-zsh"
+          # Everything declared in mise/config.toml is in place (skipped casks don't count)
+          MISE_SYSTEM_PACKAGES_MANAGERS=brew ~/.local/bin/mise bootstrap status --missing
           # Interactive zsh must start cleanly with the dotfiles loaded
           zsh -i -c 'echo "zsh OK: ZSH_CUSTOM=$ZSH_CUSTOM"' 2>&1 | tee zsh.log
           ! grep -iE "command not found|no such file|error" zsh.log

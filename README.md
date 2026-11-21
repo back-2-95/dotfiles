@@ -28,7 +28,17 @@ git clone https://github.com/back-2-95/dotfiles.git ~/dotfiles
 Start the setup:
 
 ```console
-cd ~/dotfiles && source install.sh
+cd ~/dotfiles && sh install.sh
+```
+
+### After setup
+
+Packages, apps, dotfile symlinks and tools are declared in `mise/config.toml` and applied by `mise bootstrap`:
+
+```console
+mise bootstrap --dry-run          # preview changes
+mise bootstrap                    # apply
+mise bootstrap status --missing   # what differs from the config
 ```
 
 ## Secrets
