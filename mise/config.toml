@@ -100,3 +100,16 @@ mode = "0700"
 description = "Print versions of the main software installed by the dotfiles"
 run = "~/dotfiles/scripts/versions.sh"
 quiet = true
+
+[tasks.php]
+description = "Switch the PHP version linked as `php` (mise php 8.4)"
+usage = 'arg "<version>" help="PHP version" { choices "8.4" "8.5" "8.6" }'
+quiet = true
+run = '''
+echo "🐘 Switch PHP version to ${usage_version}..."
+for v in 8.4 8.5 8.6; do
+  [ "$v" = "$usage_version" ] || /opt/homebrew/bin/brew unlink --quiet "shivammathur/php/php@$v" >/dev/null 2>&1 || true
+done
+/opt/homebrew/bin/brew link "shivammathur/php/php@${usage_version}" --force --overwrite --quiet >/dev/null 2>&1
+/opt/homebrew/bin/php -v | head -1
+'''

@@ -15,7 +15,7 @@ Personal macOS dotfiles for bootstrapping a development environment.
 | `.ssh.config` | SSH config; symlinked to `~/.ssh/config` |
 | `.ssh.local.config` | Machine-local SSH hosts — gitignored |
 | `.gitconfig` | Git config; symlinked to `~/.gitconfig` |
-| `Brewfile.php` | PHP 8.4/8.5/8.6 + PHP 8.4 extensions via real Homebrew (shivammathur/php, shivammathur/extensions), run by a `post-packages` hook in `mise/config.toml`; only 8.5 is linked |
+| `Brewfile.php` | PHP 8.4/8.5/8.6 + PHP 8.4 extensions via real Homebrew (shivammathur/php, shivammathur/extensions), run by a `post-packages` hook in `mise/config.toml`; 8.5 is linked as `php`, switch with `mise php 8.4` |
 | `dtop/config.yaml` | dtop config; symlinked to `~/.config/dtop/config.yaml` |
 | `mise/config.toml` | Global (personal) mise config — `~/.config/mise` links to `mise/`. Holds `[tools]` plus the machine setup for `mise bootstrap`: `[bootstrap.packages]` (Homebrew formulae/casks, replaces the Brewfile), `[bootstrap.repos]` (Oh My Zsh, p10k), `[dotfiles]` (symlinks). Project `mise.toml` files (e.g. employer repos) override per tool |
 | `.p10k.zsh` | Powerlevel10k theme config |

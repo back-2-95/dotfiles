@@ -14,9 +14,6 @@ alias sshf='ssh -o ForwardAgent=yes'
 alias sää='clear && curl http://wttr.in/Lohja\?n\&lang\=fi'
 alias ytunnus='echo "FI24917892" | pbcopy'
 alias m='make'
-alias php8.4='echo "🐘 Switch PHP version to 8.4..." && { brew link shivammathur/php/php@8.4 -f -q --overwrite } &> /dev/null && php -v'
-alias php8.5='echo "🐘 Switch PHP version to 8.5..." && { brew link shivammathur/php/php@8.5 -f -q --overwrite } &> /dev/null && php -v'
-alias php8.6='echo "🐘 Switch PHP version to 8.6..." && { brew link shivammathur/php/php@8.6 -f -q --overwrite } &> /dev/null && php -v'
 alias ls="eza --long --group"
 alias la="eza --long --all --group"
 alias 2dev="git checkout dev && git pull"

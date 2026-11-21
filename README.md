@@ -40,6 +40,7 @@ mise bootstrap --dry-run          # preview changes
 mise bootstrap                    # apply
 mise bootstrap status --missing   # what differs from the config
 mise run versions                 # versions of the main software
+mise php 8.4                      # switch the PHP linked as `php` (8.4, 8.5, 8.6)
 ```
 
 ## Secrets
