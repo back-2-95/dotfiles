@@ -12,6 +12,11 @@ on:
         type: boolean
         default: false
 
+# A new commit to a PR cancels that PR's previous run; runs on main finish
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
 jobs:
   install:
     runs-on: macos-26 # Tahoe, Apple Silicon
