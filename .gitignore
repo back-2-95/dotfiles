@@ -5,3 +5,4 @@ themes/powerlevel10k
 Brewfile.lock.json
 secrets.zsh
 *.local.zsh
+.DS_Store
