@@ -57,3 +57,19 @@ jobs:
           # Interactive zsh must start cleanly with the dotfiles loaded
           zsh -i -c 'echo "zsh OK: ZSH_CUSTOM=$ZSH_CUSTOM"' 2>&1 | tee zsh.log
           ! grep -iE "command not found|no such file|error" zsh.log
+
+      - name: Job summary
+        if: always()
+        run: |
+          {
+            echo "## install.sh on \`${{ runner.os }} $(sw_vers -productVersion)\`"
+            echo
+            echo "- Branch: \`${{ github.ref_name }}\` (\`${GITHUB_SHA::7}\`)"
+            echo "- Casks: $([ "$DOTFILES_SKIP_CASKS" = 1 ] && echo skipped || echo installed)"
+            echo
+            if [ -x ~/.local/bin/mise ]; then
+              PATH="$HOME/.local/bin:$HOME/.local/share/mise/shims:$PATH" ./scripts/versions.sh markdown
+            else
+              echo "_mise was not installed, no versions to report._"
+            fi
+          } >> "$GITHUB_STEP_SUMMARY"

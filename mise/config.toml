@@ -93,3 +93,9 @@ done
 mode = "0700"
 
 [bootstrap.directories."~/Druid"]  # PROJECTS_FOLDER in .env
+
+# `mise run versions` from anywhere: versions of the main software
+[tasks.versions]
+description = "Print versions of the main software installed by the dotfiles"
+run = "~/dotfiles/scripts/versions.sh"
+quiet = true

@@ -39,6 +39,7 @@ Packages, apps, dotfile symlinks and tools are declared in `mise/config.toml` an
 mise bootstrap --dry-run          # preview changes
 mise bootstrap                    # apply
 mise bootstrap status --missing   # what differs from the config
+mise run versions                 # versions of the main software
 ```
 
 ## Secrets

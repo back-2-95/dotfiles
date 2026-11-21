@@ -21,6 +21,7 @@ Personal macOS dotfiles for bootstrapping a development environment.
 | `.p10k.zsh` | Powerlevel10k theme config |
 | `zsh/secrets.zsh` | Template/example for secrets.zsh |
 | `.github/workflows/install.yml` | CI: runs `install.sh` twice on a macOS runner (casks skipped), verifies symlinks, `mise bootstrap status --missing` and zsh startup |
+| `scripts/versions.sh` | Versions of the main software (reads mise config + Brewfile.php); `mise run versions` locally, markdown job summary in CI |
 | `scripts/test-vm.sh` | Local test of `install.sh` in a fresh Tart macOS VM with GUI (`up` / `install` / `remote` / `ssh` / `reset`) |
 
 ## How Oh My Zsh loads custom files
