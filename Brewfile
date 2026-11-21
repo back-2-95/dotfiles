@@ -21,8 +21,7 @@
 # Taps - External repositories
 # =============================================================================
 
-tap 'amazeeio/lagoon-cli'           # Lagoon CLI repository
-tap 'dopplerhq/cli'                 # Doppler CLI repository
+#tap 'amazeeio/lagoon-cli'           # Lagoon CLI repository
 tap 'shivammathur/php'              # PHP version manager repository
 tap 'upcloudltd/tap'                # UpCloud CLI repository
 
@@ -34,9 +33,7 @@ brew 'eza'                          # A modern replacement for ls: https://eza.r
 brew 'git'                          # Distributed version control system
 brew 'gpatch'                       # GNU patch for applying diffs to files
 brew 'httpie'                       # User-friendly cURL replacement (HTTP client)
-brew 'jq'                           # Command-line JSON processor
 brew 'openssh'                      # OpenSSH remote login client
-brew 'yq'                           # Command-line YAML processor
 
 # =============================================================================
 # Development Tools - Programming languages and development utilities
@@ -45,21 +42,17 @@ brew 'yq'                           # Command-line YAML processor
 # PHP
 brew 'shivammathur/php/php@8.4'     # PHP 8.4 interpreter
 brew 'shivammathur/php/php@8.5'     # PHP 8.5 interpreter
-brew 'composer'                     # Dependency manager for PHP
+brew 'shivammathur/php/php@8.6'     # PHP 8.6 interpreter
 
 # Development Utilities
-# brew 'gh'                           # GitHub CLI tool
 brew 'mkcert'                       # Tool for making locally-trusted certificates
 
 # =============================================================================
 # DevOps Tools - Infrastructure and deployment tools
 # =============================================================================
 
-brew 'amazeeio/lagoon-cli/lagoon'   # CLI for interacting with Lagoon API
-# brew 'ansible'                      # IT automation platform
-brew 'doctl'                        # Command-line tool for DigitalOcean
-brew 'dopplerhq/cli/doppler'        # Secrets management CLI
-brew 'opentofu'                     # Infrastructure as code tool (Terraform fork)
+#brew 'amazeeio/lagoon-cli/lagoon'   # CLI for interacting with Lagoon API
+#brew 'opentofu'                     # Infrastructure as code tool (Terraform fork)
 brew 'skopeo'                       # Container image inspection and copying tool
 brew 'symfony-cli'                  # Symfony PHP framework CLI
 brew 'upcloudltd/tap/upcloud-cli'   # UpCloud cloud provider CLI
@@ -77,7 +70,6 @@ cask 'obsidian'                     # Note taking tool
 cask 'raycast'                      # Spotlight replacement / launcher
 cask 'rectangle'                    # Window management tool
 cask 'transmit'                     # File transfer client (FTP, SFTP, S3)
-#cask 'sublime-text'                 # Sophisticated text editor
 
 # =============================================================================
 # Browsers - Web browsers
@@ -101,7 +93,6 @@ cask 'telegram'                     # Messaging app
 cask '1password'                    # Password manager (required for SSH agent)
 # cask '1password-cli'                # Command-line interface for 1Password
 cask 'git-credential-manager'      # Git Credential Manager (Azure DevOps, etc.)
-cask 'dtop'                         # System monitor
 cask 'keepingyouawake'              # Prevents Mac from sleeping
 cask 'orbstack'                     # Docker and Linux container manager
 #cask 'istat-menus'                  # System monitoring tool
