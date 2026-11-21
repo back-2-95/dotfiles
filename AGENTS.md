@@ -16,6 +16,8 @@ Personal macOS dotfiles for bootstrapping a development environment.
 | `.ssh.local.config` | Machine-local SSH hosts — gitignored |
 | `.gitconfig` | Git config; symlinked to `~/.gitconfig` |
 | `Brewfile` | All Homebrew packages and casks |
+| `dtop/config.yaml` | dtop config; symlinked to `~/.config/dtop/config.yaml` |
+| `mise/config.toml` | Global (personal) mise tools; symlinked to `~/.config/mise/config.toml`. Project `mise.toml` files (e.g. employer repos) override per tool |
 | `.p10k.zsh` | Powerlevel10k theme config |
 | `zsh/secrets.zsh` | Template/example for secrets.zsh |
 

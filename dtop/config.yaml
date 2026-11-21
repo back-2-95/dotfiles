@@ -1,0 +1,31 @@
+# dtop configuration — symlinked to ~/.config/dtop/config.yaml by install.sh
+# Docs: https://github.com/amir20/dtop (see config.example.yaml for all keys)
+# CLI flags override these values. Ctrl-S in dtop saves preferences back here.
+# Note: dtop ignores this file with --host unless --config is given; the dtop alias in aliases.zsh adds it.
+
+hosts:
+  - host: local # follows DOCKER_HOST / active Docker context
+    name: local
+
+icons: nerd # Powerlevel10k setup already requires a Nerd Font
+all: true
+sort: name
+panes: true
+
+# == Columns ==
+# Column visibility and order.
+# List only the columns you want to see, in the order you want them.
+# Omitted columns are hidden. Press 'c' in the UI to toggle columns interactively.
+# Possible values: status, name, id, host, compose, image, ports, cpu, memory, pids, net_tx, net_rx, disk_read, disk_write, uptime, created, restarts
+# columns:
+#   - status
+#   - name
+#   - id
+#   - host
+#   - compose
+#   - cpu
+#   - memory
+#   - net_tx
+#   - net_rx
+#   - uptime
+#   - restarts
