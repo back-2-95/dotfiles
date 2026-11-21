@@ -85,6 +85,3 @@ if /opt/homebrew/bin/brew trust --help >/dev/null 2>&1; then /opt/homebrew/bin/b
 mode = "0700"
 
 [bootstrap.directories."~/Druid"]  # PROJECTS_FOLDER in .env
-
-[bootstrap.user]
-login_shell = "/bin/zsh"  # macOS default, kept explicit
