@@ -13,7 +13,7 @@ on:
 
 jobs:
   install:
-    runs-on: macos-15 # Apple Silicon
+    runs-on: macos-26 # Tahoe, Apple Silicon
     timeout-minutes: 60
     env:
       DOTFILES_SKIP_CASKS: ${{ inputs.casks && '0' || '1' }}
@@ -21,7 +21,7 @@ jobs:
       HOMEBREW_NO_AUTO_UPDATE: "1"
       MISE_GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # avoid GitHub API rate limits for "latest" tools
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
 
       - name: Lint
         run: |
