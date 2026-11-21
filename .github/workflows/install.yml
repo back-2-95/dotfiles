@@ -43,13 +43,15 @@ jobs:
         shell: zsh {0}
         run: |
           set -e
-          for link in .zshrc .p10k.zsh .gitconfig .ssh/config .claude/settings.json \
-                      .config/mise .config/dtop/config.yaml; do
+          for link in .zshrc .p10k.zsh .gitconfig .config/mise .config/dtop/config.yaml; do
             test -L "$HOME/$link" || { echo "missing symlink: ~/$link"; exit 1; }
             test -e "$HOME/$link" || { echo "broken symlink: ~/$link"; exit 1; }
           done
           test -d "$HOME/dotfiles/themes/powerlevel10k"
           test -d "$HOME/.oh-my-zsh"
+          # Partially managed files: an Include line and merged keys
+          head -1 ~/.ssh/config | grep -qx "Include ~/dotfiles/.ssh.config"
+          jq -e '.permissions.deny | length > 0' ~/.claude/settings.json
           # Everything declared in mise/config.toml is in place (skipped casks don't count)
           MISE_SYSTEM_PACKAGES_MANAGERS=brew ~/.local/bin/mise bootstrap status --missing
           # Interactive zsh must start cleanly with the dotfiles loaded

@@ -72,14 +72,20 @@ if /opt/homebrew/bin/brew trust --help >/dev/null 2>&1; then /opt/homebrew/bin/b
 "~/.oh-my-zsh" = { url = "https://github.com/ohmyzsh/ohmyzsh.git", depth = 1 }
 "~/dotfiles/themes/powerlevel10k" = { url = "https://github.com/romkatv/powerlevel10k.git", depth = 1 }
 
-# Dotfiles, symlinked into place (~/.config/mise itself is linked by install.sh)
+# Dotfiles (~/.config/mise itself is linked by install.sh)
 [dotfiles]
+# Symlinked into place
 "~/.zshrc" = "~/dotfiles/.zshrc"
 "~/.p10k.zsh" = "~/dotfiles/.p10k.zsh"
 "~/.gitconfig" = "~/dotfiles/.gitconfig"
-"~/.ssh/config" = "~/dotfiles/.ssh.config"
-"~/.claude/settings.json" = "~/dotfiles/agents/claude/settings.json"
 "~/.config/dtop/config.yaml" = "~/dotfiles/dtop/config.yaml"
+# Files that other tools also write to, so only part of them is managed:
+# ~/.ssh/config stays a regular file (Upsun CLI, OrbStack etc. add their blocks);
+# it just includes the repo's config first.
+"~/.ssh/config/dotfiles" = { line = "Include ~/dotfiles/.ssh.config", position = "prepend" }
+# Claude Code rewrites settings.json; own only the keys in the repo file
+# (permissions, attribution) and leave plugins, hooks, theme etc. to Claude.
+"~/.claude/settings.json/dotfiles" = { source = "~/dotfiles/agents/claude/settings.json", merge = true }
 
 [bootstrap.directories."~/.ssh"]
 mode = "0700"
