@@ -61,7 +61,8 @@
       "Bash(wget:*)",
       "Bash(wc:*)",
       "Bash(xargs:*)",
-      "Bash(pinchtab:*)"
+      "Bash(pinchtab:*)",
+      "Read(~/.claude/skills/**)"
     ],
     "deny": [
       "Bash(tofu:*)",
