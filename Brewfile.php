@@ -4,7 +4,7 @@ tap 'shivammathur/php'
 tap 'shivammathur/extensions'
 
 brew 'shivammathur/php/php@8.4', link: false
-brew 'shivammathur/php/php@8.5'                # Default, linked as `php`
+brew 'shivammathur/php/php@8.5', link: true    # Default, keg-only so force-linked as `php`
 brew 'shivammathur/php/php@8.6', link: false
 
 # PHP 8.4 extensions

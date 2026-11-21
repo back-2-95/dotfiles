@@ -54,6 +54,9 @@ jobs:
           jq -e '.permissions.deny | length > 0' ~/.claude/settings.json
           # Everything declared in mise/config.toml is in place (skipped casks don't count)
           MISE_SYSTEM_PACKAGES_MANAGERS=brew ~/.local/bin/mise bootstrap status --missing
+          # PHP 8.5 is linked as `php` and Composer runs on it
+          /opt/homebrew/bin/php -v | grep -q '^PHP 8\.5\.'
+          PATH="/opt/homebrew/bin:$HOME/.local/share/mise/shims:$PATH" composer --version
           # Interactive zsh must start cleanly with the dotfiles loaded
           zsh -i -c 'echo "zsh OK: ZSH_CUSTOM=$ZSH_CUSTOM"' 2>&1 | tee zsh.log
           ! grep -iE "command not found|no such file|error" zsh.log

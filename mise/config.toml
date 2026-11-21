@@ -10,6 +10,7 @@ jq = "latest"
 node = "24"
 "pipx:homeassistant-cli" = "latest"
 "github:UpCloudLtd/upcloud-cli" = "latest" # upctl
+"github:composer/composer" = { version = "latest", asset_pattern = "composer.phar", bin = "composer" }
 pnpm = "12"
 python = ["3", "2"] # python/python3 = 3.x (used by uv/pipx tools); python2 stays available
 uv = "latest"
