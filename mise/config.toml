@@ -3,7 +3,7 @@
 
 [tools]
 1password-cli = "latest"
-ansible = { version = "15", pipx_args = "--include-deps", uvx = false }
+ansible = "15" # installed via uv; mise exposes ansible-core commands (needs uv below)
 gh = "latest"
 "github:amir20/dtop" = "latest"
 jq = "latest"
@@ -11,4 +11,5 @@ node = "24"
 "pipx:homeassistant-cli" = "latest"
 pnpm = "12"
 python = "2"
+uv = "latest"
 yq = "latest"
