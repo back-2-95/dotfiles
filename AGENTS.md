@@ -20,6 +20,8 @@ Personal macOS dotfiles for bootstrapping a development environment.
 | `mise/config.toml` | Global (personal) mise tools; symlinked to `~/.config/mise/config.toml`. Project `mise.toml` files (e.g. employer repos) override per tool |
 | `.p10k.zsh` | Powerlevel10k theme config |
 | `zsh/secrets.zsh` | Template/example for secrets.zsh |
+| `.github/workflows/install.yml` | CI: runs `install.sh` twice on a macOS runner (casks skipped) and verifies symlinks + zsh startup |
+| `scripts/test-vm.sh` | Local test of `install.sh` in a fresh Tart macOS VM with GUI (`up` / `install` / `remote` / `ssh` / `reset`) |
 
 ## How Oh My Zsh loads custom files
 

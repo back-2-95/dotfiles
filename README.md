@@ -15,7 +15,7 @@ These are my dotfiles for settings up my macOS from scratch.
 sh -c "$(curl -fsSL https://git.io/JvrDa)"
 ```
 
-Source: https://raw.githubusercontent.com/back-2-95/dotfiles/master/install.sh
+Source: https://raw.githubusercontent.com/back-2-95/dotfiles/main/install.sh
 
 ### Manually
 

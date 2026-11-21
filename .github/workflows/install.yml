@@ -1,0 +1,56 @@
+name: Test install.sh
+
+on:
+  push:
+    branches: [main]
+    paths: [install.sh]
+  pull_request:
+  workflow_dispatch:
+    inputs:
+      casks:
+        description: Also install casks (GUI apps, slow)
+        type: boolean
+        default: false
+
+jobs:
+  install:
+    runs-on: macos-26 # Tahoe, Apple Silicon
+    timeout-minutes: 60
+    env:
+      DOTFILES_SKIP_CASKS: ${{ inputs.casks && '0' || '1' }}
+      NONINTERACTIVE: "1"
+      HOMEBREW_NO_AUTO_UPDATE: "1"
+      MISE_GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # avoid GitHub API rate limits for "latest" tools
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+
+      - name: Lint
+        run: |
+          sh -n install.sh
+          brew install shellcheck
+          shellcheck -s sh -S error install.sh
+
+      # .zshrc hardcodes ~/dotfiles, so expose the checkout there
+      - name: Link checkout to ~/dotfiles
+        run: ln -s "$GITHUB_WORKSPACE" "$HOME/dotfiles"
+
+      - name: Run install.sh
+        run: ./install.sh
+
+      - name: Run install.sh again (idempotency)
+        run: ./install.sh
+
+      - name: Verify
+        shell: zsh {0}
+        run: |
+          set -e
+          for link in .zshrc .p10k.zsh .gitconfig .ssh/config .claude/settings.json \
+                      .config/mise/config.toml .config/dtop/config.yaml; do
+            test -L "$HOME/$link" || { echo "missing symlink: ~/$link"; exit 1; }
+            test -e "$HOME/$link" || { echo "broken symlink: ~/$link"; exit 1; }
+          done
+          test -d "$HOME/dotfiles/themes/powerlevel10k"
+          ~/.local/bin/mise ls
+          # Interactive zsh must start cleanly with the dotfiles loaded
+          zsh -i -c 'echo "zsh OK: ZSH_CUSTOM=$ZSH_CUSTOM"' 2>&1 | tee zsh.log
+          ! grep -iE "command not found|no such file|error" zsh.log

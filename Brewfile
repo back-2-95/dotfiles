@@ -40,9 +40,9 @@ brew 'openssh'                      # OpenSSH remote login client
 # =============================================================================
 
 # PHP
-brew 'shivammathur/php/php@8.4'     # PHP 8.4 interpreter
-brew 'shivammathur/php/php@8.5'     # PHP 8.5 interpreter
-brew 'shivammathur/php/php@8.6'     # PHP 8.6 interpreter
+brew 'shivammathur/php/php@8.4', link: false  # PHP 8.4 interpreter
+brew 'shivammathur/php/php@8.5'     # PHP 8.5 interpreter (default, linked as `php`)
+brew 'shivammathur/php/php@8.6', link: false  # PHP 8.6 interpreter
 
 # Development Utilities
 brew 'mkcert'                       # Tool for making locally-trusted certificates

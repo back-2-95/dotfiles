@@ -3,12 +3,13 @@
 
 [tools]
 1password-cli = "latest"
-ansible = { version = "15", pipx_args = "--include-deps", uvx = false }
+ansible = "15" # installed via uv; mise exposes ansible-core commands (needs uv below)
 gh = "latest"
 "github:amir20/dtop" = "latest"
 jq = "latest"
 node = "24"
 "pipx:homeassistant-cli" = "latest"
 pnpm = "12"
-python = "2"
+python = ["3", "2"] # python/python3 = 3.x (used by uv/pipx tools); python2 stays available
+uv = "latest"
 yq = "latest"
